@@ -5,7 +5,8 @@ import ShowsContainer from './ShowsContainer'
 export default class App extends Component {
   state = {
     shows: {},
-    query: ''
+    query: '',
+    querySent: false
   }
   handleChange = e => {
     e.persist()
@@ -25,7 +26,8 @@ export default class App extends Component {
         .then(shows => {
           return this.setState(() => ({
             shows,
-            query: ''
+            query: '',
+            querySent: true
           }))
         })
         .then(() => console.log(this.state.shows))
@@ -34,7 +36,7 @@ export default class App extends Component {
     
   }
   render() {
-    let displayShows = (this.state.shows.hasOwnProperty('_embedded')) ? (<ShowsContainer shows={this.state.shows} />) : 'Sorry, no events are listed in your area'
+    let displayShows = (this.state.shows.hasOwnProperty('_embedded')) ? (<ShowsContainer shows={this.state.shows} />) : this.state.querySent ? 'Sorry, no events are listed in your area' : ''
     return (
       <div>
         <form
@@ -44,6 +46,7 @@ export default class App extends Component {
             name="query"
             value={this.state.query}
             onChange={this.handleChange}
+            placeholder="Type your city or zip code here"
           />
         <input 
           type='submit' 
