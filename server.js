@@ -30,15 +30,15 @@ app.get('/', (req, res) => {
 });
 
  app.get('/shows/:zip', async (req, res) => {
-  console.log(req.param.zip);
+  console.log(req.params.zip);
   try {
-    let request = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?apikey=${key}&zip=${req.param.zip}`)
+    let request = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?apikey=${key}&postalCode=${req.params.zip}`)
     let shows = await request.json()
     return res.status(200).send(shows)
 
   } catch (err) {
     console.log('this didn\'t work');
-    console.error(error);
+    console.error(err);
   }
 })
 

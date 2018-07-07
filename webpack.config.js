@@ -1,5 +1,6 @@
 const path = require('path')
 const presets = ['env', 'react', 'stage-2']
+const plugins = ['transform-object-rest-spread', 'transform-class-properties']
 
 module.exports = {
   devtool: 'source-map',
@@ -22,7 +23,7 @@ module.exports = {
         exclude: '/node_modules/',
         options: {
           presets: [...presets],
-          plugins: ['transform-object-rest-spread'],
+          plugins: [...plugins],
         }
       }
     ]

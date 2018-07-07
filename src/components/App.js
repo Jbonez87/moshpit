@@ -4,28 +4,50 @@ import PropTypes from 'prop-types'
 
 export default class App extends Component {
   state = {
-    shows: {}
+    shows: {},
+    query: ''
   }
-  searchByZip(e) {
-    e.preventDefault();
-    const value = e.target.value;
-    fetch(`/shows/${value}`)
-    .then(res => res.json())
-    .then(shows => {
-      return this.setState(() => ({shows}))
+  // constructor() {
+  //   super();
+  //   this.handleChange = this.handleChange.bind(this)
+  // }
+  handleChange = e => {
+    e.persist()
+    this.setState(() => { 
+      return {
+        [e.target.name]: e.target.value 
+      }
     })
-    .then(() => console.log(this.state.shows));
   }
-  componentDidMount() {
-    fetch('/shows/10010')
-    .then(res => res.json())
-    .then(json => this.setState(() => ({shows: json})))
-    .then(() => console.log(this.state.shows))
+  handleSubmit = e => {
+    e.preventDefault();
+    const value = this.state.query;
+    fetch(`/shows/${value}`)
+      .then(res => res.json())
+      .then(shows => {
+        return this.setState(() => ({
+          shows,
+          query: ''
+        }))
+      })
+      .then(() => console.log(this.state.shows));
   }
   render() {
     return (
       <div>
-        Test
+        <form
+          onSubmit={this.handleSubmit}
+        >
+          <input
+            name="query"
+            value={this.state.query}
+            onChange={this.handleChange}
+          />
+        <input 
+          type='submit' 
+          value='Search shows' 
+        />
+        </form>
       </div>
     )
   }
