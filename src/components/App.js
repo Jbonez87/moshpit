@@ -1,16 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-
+import ShowsContainer from './ShowsContainer'
 export default class App extends Component {
   state = {
     shows: {},
     query: ''
   }
-  // constructor() {
-  //   super();
-  //   this.handleChange = this.handleChange.bind(this)
-  // }
   handleChange = e => {
     e.persist()
     this.setState(() => { 
@@ -20,19 +16,25 @@ export default class App extends Component {
     })
   }
   handleSubmit = e => {
-    e.preventDefault();
-    const value = this.state.query;
-    fetch(`/shows/${value}`)
-      .then(res => res.json())
-      .then(shows => {
-        return this.setState(() => ({
-          shows,
-          query: ''
-        }))
-      })
-      .then(() => console.log(this.state.shows));
+    e.preventDefault()
+    let value
+    if(this.state.query) {
+      value = this.state.query
+      return fetch(`/shows/${value}`)
+        .then(res => res.json())
+        .then(shows => {
+          return this.setState(() => ({
+            shows,
+            query: ''
+          }))
+        })
+        .then(() => console.log(this.state.shows))
+    }
+    return
+    
   }
   render() {
+    let displayShows = (this.state.shows.hasOwnProperty('_embedded')) ? (<ShowsContainer shows={this.state.shows} />) : 'Sorry, no events are listed in your area'
     return (
       <div>
         <form
@@ -48,6 +50,9 @@ export default class App extends Component {
           value='Search shows' 
         />
         </form>
+        <div>
+          {displayShows}
+        </div>
       </div>
     )
   }
