@@ -33,10 +33,9 @@ export default class App extends Component {
         .then(() => console.log(this.state.shows))
     }
     return
-    
   }
   render() {
-    let displayShows = (this.state.shows.hasOwnProperty('_embedded')) ? (<ShowsContainer shows={this.state.shows} />) : this.state.querySent ? 'Sorry, no events are listed in your area' : ''
+    let displayShows = (this.state.shows && this.state.shows.hasOwnProperty('_embedded')) ? (<ShowsContainer shows={this.state.shows} />) : this.state.querySent ? 'Sorry, no events are listed in your area' : ''
     return (
       <div>
         <form
@@ -44,6 +43,7 @@ export default class App extends Component {
         >
           <input
             name="query"
+            type="text"
             value={this.state.query}
             onChange={this.handleChange}
             placeholder="Type your city or zip code here"

@@ -30,15 +30,27 @@ app.get('/', (req, res) => {
 });
 
  app.get('/shows/:zip', async (req, res) => {
-  console.log(req.params.zip);
-  try {
-    let request = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?apikey=${key}&postalCode=${req.params.zip}`)
-    let shows = await request.json()
-    return res.status(200).send(shows)
+  console.log(req.params.zip)
+  let request
+  if(isNaN(req.params.zip)) {
+    try {
+      request = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?apikey=${key}&city=${req.params.zip}`)
+      let shows = await request.json()
+      return res.status(200).send(shows)
+    } catch (err) {
+      console.log('this did\'t work')
+      console.error(err)
+    }
+  } else {
+    try {
+      request = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?apikey=${key}&postalCode=${req.params.zip}`)
+      let shows = await request.json()
+      return res.status(200).send(shows)
 
-  } catch (err) {
-    console.log('this didn\'t work');
-    console.error(err);
+    } catch (err) {
+      console.log('this didn\'t work');
+      console.error(err);
+    }
   }
 })
 

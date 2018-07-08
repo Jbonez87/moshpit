@@ -1,13 +1,15 @@
 import React from 'react'
+import ShowItem from './ShowItem'
 
 const ShowsContainer = (props) => {
   let shows = props.shows._embedded ? props.shows._embedded.events.map(show => {
           return (
-            <li
+            <ShowItem 
               key={show.id}
-            >
-              <p>{show.name}</p>
-            </li>
+              name={show.name}
+              url={show.url}
+              images={show.images}
+            />
           )
         }) : ''
   return (
