@@ -15,8 +15,10 @@ const ShowItem = (props) => {
   } = props
 
   let filteredImages = images
-    .filter(image => image.url.includes('CUSTOM'))
+    .filter(image => (image.url.includes('CUSTOM') || image.url.includes('RETINA')))
     .filter(image => image !== undefined)
+  
+  console.log(filteredImages)
 
   return (
     <li>
