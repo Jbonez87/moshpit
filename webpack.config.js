@@ -1,20 +1,33 @@
 const path = require('path')
-const presets = ['env', 'react', 'stage-2']
-const plugins = ['transform-object-rest-spread', 'transform-class-properties', 'transform-react-jsx-source']
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
+const presets = [
+  '@babel/preset-env',
+  '@babel/preset-react'
+]
+const plugins = [
+  '@babel/plugin-proposal-object-rest-spread',
+  '@babel/plugin-proposal-class-properties',
+  [
+    '@babel/plugin-transform-runtime',
+    {
+      corejs: false,
+      helpers: false,
+      regenerator: true,
+      useESModules: true
+    }
+  ]
+]
 
 module.exports = {
   devtool: 'source-map',
   entry: path.resolve(__dirname, 'src', 'index.js'),
-  mode: 'development',
-  devServer: {
-    contentBase: path.resolve(__dirname, 'src', 'static'),
-    inline: true,
-    port: 3000,
-  },
   output: {
-    path: path.resolve(__dirname, 'src', 'static', 'js'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
   },
+  mode: 'production',
   module: {
     rules: [
       {
@@ -27,18 +40,32 @@ module.exports = {
         }
       },
       {
-        test: /\.(jpg|png|svg)$/,
-        loader: 'url-loader',
-        options: {
-          limit: 25000,
-        },
-      }, {
-        test: /\.(jpg|png|svg)$/,
-        loader: 'file-loader',
-        options: {
-          name: '[path][name].[hash].[ext]',
-        },
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+        ]
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 8192,
+          },
+        }],
       },
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      hash: true,
+      inject: false,
+      template: path.resolve(__dirname, 'src', 'static', 'index.html'),
+      filename: 'index.html'
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'style.css'
+    }),
+  ],
 }

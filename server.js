@@ -1,59 +1,35 @@
-process.env.ENV = process.env.ENV || 'dev';
+import dotenv from 'dotenv';
+dotenv.config();
 
-require('dotenv').config()
-const path = require('path');
-const express = require('express');
-const webpack = require('webpack');
-const wpMiddleWare = require('webpack-dev-middleware');
-const wpHotMiddleWare = require('webpack-hot-middleware');
-const config = require('./webpack.config.js');
-const fetch = require('node-fetch');
+import path from 'path';
+import express from 'express';
+import webpack from 'webpack';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
+import config from './webpack.config.js';
 const app = express();
-const key = process.env.API_KEY;
 
-if (process.env.ENV === 'dev') {
-  const compiler = webpack(config);
-  const midWare = wpMiddleWare(compiler, {
-    stats: {
-      colors: true,
-      chunks: false,
-    },
-  });
-
-  app.use(midWare);
-  app.use(wpHotMiddleWare(compiler));
-}
-
-app.use(express.static(path.join(__dirname, 'src')));
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'src', 'static', 'index.html'));
+const compiler = webpack(config);
+const midWare = webpackDevMiddleware(compiler, {
+  stats: {
+    colors: true,
+    chunks: false,
+  },
 });
 
- app.get('/shows/:zip', async (req, res) => {
-  console.log(req.params.zip)
-  let request
-  let shows
-  if(isNaN(req.params.zip)) {
-    try {
-      request = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?apikey=${key}&city=${req.params.zip}`)
-      shows = await request.json()
-      return res.status(200).send(shows)
-    } catch (err) {
-      console.log('this did\'t work')
-      console.error(err)
-    }
-  } else {
-    try {
-      request = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?apikey=${key}&postalCode=${req.params.zip}`)
-      shows = await request.json()
-      return res.status(200).send(shows)
+app.use(midWare);
+app.use(webpackHotMiddleware(compiler));
 
-    } catch (err) {
-      console.log('this didn\'t work');
-      console.error(err);
+app.use(express.static(path.join(__dirname, 'src')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'src', 'static', 'index.html'), err => {
+    if (err) {
+      res.status(404).send(err);
+    } else {
+      res.status(500).send(err);
     }
-  }
-})
+  });
+});
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
