@@ -4,7 +4,7 @@ import {
   FETCHING_CONCERTS_REJECTED
 } from './types';
 
-const apiKey = process.env.API_KEY || 'mQaGLmJAdbIIluEaEIvEfzTAJA18fWzQ';
+const key = process.env.API_KEY || 'mQaGLmJAdbIIluEaEIvEfzTAJA18fWzQ';
 
 export const fetchConcerts = (query) => async dispatch => {
   dispatch({
