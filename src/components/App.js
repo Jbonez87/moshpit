@@ -7,6 +7,7 @@ import {
 
 import routes from './routes';
 import NavBar from './NavBar';
+import '../static/css/app.css';
 
 export default class App extends Component {
   render() {

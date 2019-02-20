@@ -1,0 +1,14 @@
+nav a, a {
+  margin: 0 1rem 0 1rem;
+  font-size: 1.8rem;
+  font-family: 'Roboto',
+  sans-serif;
+  text-decoration: none;
+  color: white;
+}
+
+nav a:hover, 
+a:hover, 
+.active {
+  color: rgb(43, 228, 212);
+}
