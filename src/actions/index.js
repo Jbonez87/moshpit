@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import {
   FETCHING_CONCERTS,
   FETCHING_CONCERTS_RESOLVED,
@@ -8,7 +11,8 @@ import {
   massageQuery
 } from '../utils';
 
-const key = process.env.API_KEY || 'mQaGLmJAdbIIluEaEIvEfzTAJA18fWzQ';
+const key = process.env.API_KEY;
+console.log(key);
 
 export const fetchConcerts = query => async dispatch => {
   dispatch({
