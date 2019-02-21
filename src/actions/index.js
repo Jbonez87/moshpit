@@ -4,14 +4,19 @@ import {
   FETCHING_CONCERTS_REJECTED
 } from './types';
 
+import {
+  massageQuery
+} from '../utils';
+
 const key = process.env.API_KEY || 'mQaGLmJAdbIIluEaEIvEfzTAJA18fWzQ';
 
-export const fetchConcerts = (query) => async dispatch => {
+export const fetchConcerts = query => async dispatch => {
   dispatch({
     type: FETCHING_CONCERTS
   })
   try {
-    const request = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?apikey=${key}&zip=${query}`);
+    let url = massageQuery(query, key);
+    const request = await fetch(url);
     const response = await request.json();
     if (!request.ok) {
       dispatch({
