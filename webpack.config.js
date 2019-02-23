@@ -28,6 +28,11 @@ module.exports = {
     filename: 'bundle.js',
   },
   mode: 'production',
+  devServer: {
+    contentBase: path.join(__dirname, 'src', 'static'),
+    inline: true,
+    port: 8080,
+  },
   module: {
     rules: [
       {

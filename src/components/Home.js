@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 
 class Home extends Component {
   state = {
-    query: '',
-    options: [
-      'Zip Code',
-      'City'
-    ]
+    query: ''
   }
   handleChange = e => {
     e.persist();
@@ -24,7 +20,8 @@ class Home extends Component {
   render() {
     const {
       query,
-      options
+      options,
+      type
     } = this.state;
     return (
       <div>
@@ -34,14 +31,17 @@ class Home extends Component {
           <form
             onSubmit={this.handleSubmit}
           >
-            <select
-              id="type"
-              onChange={this.handleChange}
-            >
-              {
-                options.map(option => (<option>{option}</option>))
-              }
-            </select>
+          <input 
+            id="query"
+            type="text"
+            value={query}
+            placeholder="Search by zip code or by city"
+            onChange={this.handleChange}
+          />
+          <input 
+            type="submit"
+            value="Go"
+          />
           </form>
         </div>
       </div>
