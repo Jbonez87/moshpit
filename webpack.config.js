@@ -31,7 +31,7 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'src', 'static'),
     inline: true,
-    port: 8080,
+    port: 3000,
   },
   module: {
     rules: [
