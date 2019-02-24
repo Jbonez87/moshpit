@@ -1,4 +1,11 @@
 import React, { Component } from 'react';
+import {
+  connect
+} from 'react-redux';
+
+import {
+  fetchConcerts
+} from '../actions';
 
 class Home extends Component {
   state = {
@@ -19,9 +26,7 @@ class Home extends Component {
   }
   render() {
     const {
-      query,
-      options,
-      type
+      query
     } = this.state;
     return (
       <div>
@@ -49,4 +54,16 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = (state, props) => ({
+  concerts: state.concertsReducer.concerts,
+  isLoading: state.concertsReducer.isLoading,
+  error: state.concertsReducer.error
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchConcerts(query) {
+    dispatch(fetchConcerts(query));
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

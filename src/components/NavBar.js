@@ -17,6 +17,7 @@ const NavBar = () => (
         if(!route.path || route.path.includes(':')) return;
         return (
           <NavLink
+            key={route.id}
             exact
             activeClassName="active"
             to={route.path}
