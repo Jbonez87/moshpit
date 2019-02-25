@@ -19,6 +19,11 @@ export const fetchConcertsByZip = query => async dispatch => {
         type: FETCHING_CONCERTS_REJECTED,
         payload: request.statusText
       });
+    } else if(!query) {
+      dispatch({
+        type: FETCHING_CONCERTS_REJECTED,
+        payload: 'Please do not leave form blank'
+      })
     } else if (!response._embedded) {
       dispatch({
         type: FETCHING_CONCERTS_REJECTED,

@@ -14,8 +14,12 @@ import {
 
 class Home extends Component {
   state = {
-    query: ''
+    search: ''
   }
+  /**
+   * Generic method to handle onChange events on
+   * text inputs or select boxes
+   */
   handleChange = e => {
     e.persist();
     this.setState(() => ({
@@ -25,21 +29,20 @@ class Home extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const {
-      query
+      search
     } = this.state;
     
-    if(!query) return;
     // Uses the query to determine which search should be performed
-    if(isNaN(query)) {
-      this.props.fetchConcertsByCity(encodeURIComponent(query))
+    if(isNaN(search)) {
+      this.props.fetchConcertsByCity(encodeURIComponent(search))
     } else {
-      this.props.fetchConcertsByZip(encodeURIComponent(query));
+      this.props.fetchConcertsByZip(encodeURIComponent(search));
     }  
   }
   render() {
     // user input
     const {
-      query
+      search
     } = this.state;
 
     /**
@@ -54,7 +57,7 @@ class Home extends Component {
     /**
      * Checks for network or custom error messages from concertsReducer
      */
-    const error = this.props.error ? <p>{this.props.error}</p> : '';
+    const error = this.props.error ? <p className="error">{this.props.error}</p> : '';
 
     /**
      * This checks to make sure that the _embedded object and events array
@@ -76,10 +79,14 @@ class Home extends Component {
           <form
             onSubmit={this.handleSubmit}
           >
+          <label 
+              htmlFor="search"
+          >
+          </label>
           <input 
-            id="query"
+            id="search"
             type="text"
-            value={query}
+            value={search}
             placeholder="Search by zip code or by city"
             onChange={this.handleChange}
           />
