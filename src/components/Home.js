@@ -66,6 +66,7 @@ class Home extends Component {
     const concertsMap = (concerts._embedded && concerts._embedded.events) ? concerts._embedded.events.map(({ id, name }) => (
       <div
         key={id}
+        className="event-item"
       >
         <p>{name}</p>
       </div>

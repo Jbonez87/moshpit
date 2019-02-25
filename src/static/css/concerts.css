@@ -16,7 +16,7 @@
   box-shadow: inset 0 0 0 0.0625rem rgb(39, 39, 39);
   display: inline-block;
   font-size: 0rem;
-  margin: 3rem auto 0;
+  margin: 1.3rem auto 0;
   padding: 1.25rem;
   position: relative;
   z-index: 1;
@@ -110,4 +110,8 @@
     border-color: rgb(102, 255, 102);
     box-shadow: 0 0 1.25rem rgba(0, 255, 0, .6), inset 0 0 0.625rem rgba(0, 255, 0, .4), 0 0.125rem 0 rgb(0, 0, 0);
   }
+}
+
+.event-item {
+  padding: 0.3125rem 0 0.3125rem 0;
 }
