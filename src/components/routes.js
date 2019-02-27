@@ -1,10 +1,11 @@
 import uuid from 'uuid/v4';
 
 import Home from './Home';
-import Concerts from './Concerts';
+import Favorites from './Favorites';
 import NotFound from './NotFound';
 
-export default [{
+export default [
+  {
     id: uuid(),
     path: "/",
     name: "Home",
@@ -12,9 +13,9 @@ export default [{
   },
   {
     id: uuid(),
-    path: "/concerts",
-    name: "Concerts",
-    component: Concerts
+    path: "/favorites",
+    name: "Favorites",
+    component: Favorites
   },
   {
     id: uuid(),
