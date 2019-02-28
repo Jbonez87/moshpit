@@ -19,7 +19,7 @@ class Favorites extends Component {
     const favoriteVals = Object.values(favorites);
     const favoritesList = favoriteVals.length ? favoriteVals.map(({id, name}) => (
       <div
-        key={imdbID}
+        key={id}
         className="concert-wrapper"
       >
         <Link

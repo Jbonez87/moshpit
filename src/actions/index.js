@@ -75,3 +75,45 @@ export const fetchConcertsByCity = query => async dispatch => {
     });
   }
 }
+
+export const fetchConcert = id => async dispatch => {
+  dispatch({
+    type: FETCHING_CONCERT
+  })
+  try {
+    const request = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?apikey=${key}&id=${id}`);
+    const response = await request.json();
+    if (!request.ok) {
+      dispatch({
+        type: FETCHING_CONCERT_REJECTED,
+        payload: request.statusText
+      });
+    } else {
+      dispatch({
+        type: FETCHING_CONCERT_RESOLVED,
+        payload: response
+      });
+    }
+  } catch (e) {
+    dispatch({
+      type: FETCHING_MOVIE_REJECTED,
+      payload: e
+    });
+  }
+}
+
+export const addingFavorites = concert => (dispatch, getState) => {
+  dispatch({
+    type: ADDING_FAVORITES
+  });
+  if (!concert) {
+    dispatch({
+      type: ADDING_FAVORITES_REJECTED,
+      payload: 'Concert not found'
+    });
+  }
+  dispatch({
+    type: ADDING_FAVORITES_RESOLVED,
+    payload: getState().concertsReducer.concerts[concert.id]
+  });
+}
