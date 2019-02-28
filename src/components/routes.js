@@ -13,7 +13,7 @@ export default [
   },
   {
     id: uuid(),
-    path: "/favorites",
+    path: "/favorite",
     name: "Favorites",
     component: Favorites
   },
