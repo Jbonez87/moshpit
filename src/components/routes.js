@@ -13,9 +13,14 @@ export default [
   },
   {
     id: uuid(),
-    path: "/favorite",
+    path: "/favorites",
     name: "Favorites",
     component: Favorites
+  },
+  {
+    id: uuid(),
+    path: "/concerts/:id",
+    component: ConcertDetail
   },
   {
     id: uuid(),
