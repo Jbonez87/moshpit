@@ -12,6 +12,15 @@ import {
 
 class ConcertDetail extends Component {
   componentDidMount() {
+    console.log(this.props);
+    const {
+      match: {
+        params: {
+          id
+        }
+      },
+      fetchConcert
+    } = this.props;
     fetchConcert(id);
   }
   shouldComponentUpdate(nextProps, nextState) {
@@ -23,6 +32,10 @@ class ConcertDetail extends Component {
     this.props.addingFavorites(this.props.concert);
   }
   render() {
+    const {
+      error,
+      isLoading
+    } = this.props;
     return (
       <div
         className="details-wrapper"
@@ -44,16 +57,16 @@ class ConcertDetail extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  fetchMovie(id) {
-    dispatch(fetchMovie(id))
+  fetchConcert(id) {
+    dispatch(fetchConcert(id))
   },
-  addingFavorites(movie) {
-    dispatch(addingFavorites(movie))
+  addingFavorites(concert) {
+    dispatch(addingFavorites(concert))
   }
 })
 
 const mapStateToProps = (state, props) => ({
-  concert: state.concertReducer.movie,
+  concert: state.concertReducer.concert,
   isLoading: state.concertReducer.isLoading,
   error: state.concertReducer.error,
   favorites: state.favoritesReducer.favorites

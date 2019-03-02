@@ -30,13 +30,17 @@ class Home extends Component {
       [e.target.id]: e.target.value
     }));
   }
+  /**
+   * This is a submit handler that checks the user input
+   * and dispatches fetchConcertsByZip or fetchConcertsByCity
+   */
   handleSubmit = e => {
     e.preventDefault();
     const {
       search
     } = this.state;
     
-    // Uses the query to determine which search should be performed
+    // Checks if the query isNaN to determine which search should be performed
     if(isNaN(search)) {
       this.props.fetchConcertsByCity(encodeURIComponent(search))
     } else {
@@ -76,10 +80,10 @@ class Home extends Component {
         className="event-item"
       >
         <Link
-          exact
           to={`/concerts/${id}`}
         >
-          <img 
+          <img
+            className="event-image"
             src={images[0].url}
             onError={this.handleError}
           />

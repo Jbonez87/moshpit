@@ -1,7 +1,13 @@
 import {
   FETCHING_CONCERTS,
   FETCHING_CONCERTS_RESOLVED,
-  FETCHING_CONCERTS_REJECTED
+  FETCHING_CONCERTS_REJECTED,
+  FETCHING_CONCERT,
+  FETCHING_CONCERT_RESOLVED,
+  FETCHING_CONCERT_REJECTED,
+  ADDING_FAVORITES,
+  ADDING_FAVORITES_RESOLVED,
+  ADDING_FAVORITES_REJECTED
 } from './types';
 
 import key from '../../config';
@@ -96,7 +102,7 @@ export const fetchConcert = id => async dispatch => {
     }
   } catch (e) {
     dispatch({
-      type: FETCHING_MOVIE_REJECTED,
+      type: FETCHING_CONCERT_REJECTED,
       payload: e
     });
   }
