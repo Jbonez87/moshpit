@@ -2,6 +2,7 @@ import uuid from 'uuid/v4';
 
 import Home from './Home';
 import Favorites from './Favorites';
+import ConcertDetail from './ConcertDetail';
 import NotFound from './NotFound';
 
 export default [

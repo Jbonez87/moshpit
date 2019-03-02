@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import {
   connect
 } from 'react-redux';
+import {
+  Link
+} from 'react-router-dom';
 
 import '../static/css/concerts.css';
 
 import loadingGif from '../static/images/heavylogointrohorizonatal_done.gif';
+import placeHolder from '../static/images/placeholder.jpg';
 
 import {
   fetchConcertsByCity,
@@ -39,6 +43,9 @@ class Home extends Component {
       this.props.fetchConcertsByZip(encodeURIComponent(search));
     }  
   }
+  handleImageError = e => {
+    e.target.src = placeHolder;
+  }
   render() {
     // user input
     const {
@@ -63,11 +70,20 @@ class Home extends Component {
      * This checks to make sure that the _embedded object and events array
      * are defined in the concerts object
      */
-    const concertsMap = (concerts._embedded && concerts._embedded.events) ? concerts._embedded.events.map(({ id, name }) => (
+    const concertsMap = (concerts._embedded && concerts._embedded.events) ? concerts._embedded.events.map(({ id, name, images }) => (
       <div
         key={id}
         className="event-item"
       >
+        <Link
+          exact
+          to={`/concerts/${id}`}
+        >
+          <img 
+            src={images[0].url}
+            onError={this.handleError}
+          />
+        </Link>
         <p>{name}</p>
       </div>
     )) : '';
