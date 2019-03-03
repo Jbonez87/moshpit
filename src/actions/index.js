@@ -74,7 +74,6 @@ export const fetchConcertsByCity = query => async dispatch => {
       });
     }
   } catch (e) {
-    console.log(e);
     dispatch({
       type: FETCHING_CONCERTS_REJECTED,
       payload: e

@@ -17,13 +17,13 @@ class Favorites extends Component {
     } = this.props;
     const hasError = error ? (<p>{error}</p>) : (<p>No favorites yet</p>);
     const favoriteVals = Object.values(favorites);
-    const favoritesList = favoriteVals.length ? favoriteVals.map(({id, name}) => (
+    const favoritesList = favoriteVals.length ? favoriteVals.map(({id, name, images}) => (
       <div
         key={id}
         className="concert-wrapper"
       >
         <Link
-          to={`/${id}`}
+          to={`/concerts/${id}`}
         >
           <img
             className="poster"

@@ -8,11 +8,13 @@ import {
   addingFavorites
 } from '../actions';
 
+// import loadingGif from '../static/images/heavylogointrohorizonatal_done.gif';
+import placeHolder from '../static/images/placeholder.jpg';
+
 // import '../static/css/details.scss';
 
 class ConcertDetail extends Component {
   componentDidMount() {
-    console.log(this.props);
     const {
       match: {
         params: {
@@ -23,19 +25,45 @@ class ConcertDetail extends Component {
     } = this.props;
     fetchConcert(id);
   }
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.concert != this.props.concert;
-  }
   handleFavorite = e => {
     e.preventDefault();
     if (this.props.favorites.hasOwnProperty(this.props.concert)) return;
     this.props.addingFavorites(this.props.concert);
   }
+  handleImageError = e => {
+    e.target.src = placeHolder;
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextProps.concert != this.props.concert;
+  }
   render() {
+    if(!this.props.concert._embedded) return <p>Loading...</p>;
+
     const {
+      concert: {
+        _embedded: {
+          events
+        }
+      },
       error,
       isLoading
     } = this.props;
+    const eventsMap = events.map(event => ({
+      [event.id]: event
+    }));
+    const eventObj = Object.assign({}, ...eventsMap);
+    const event = Object.values(eventObj).map(({id, name, images}) => (
+      <div
+        key={id}
+      >
+        <h2>{name}</h2>
+        <img 
+          className = "event-image"
+          src={images[0].url}
+          onError={this.handleError}
+        />
+      </div>
+    ))
     return (
       <div
         className="details-wrapper"
@@ -45,6 +73,9 @@ class ConcertDetail extends Component {
         }
         {
           error ? (<p>{error}</p>) : ''
+        }
+        {
+          event
         }
         <button
           onClick={this.handleFavorite}

@@ -1,7 +1,7 @@
 import {
-  ADDING_FAVORITE_CONCERTS,
-  ADDING_FAVORITE_CONCERTS_RESOLVED,
-  ADDING_FAVORITE_CONCERTS_REJECTED
+  ADDING_FAVORITES,
+  ADDING_FAVORITES_RESOLVED,
+  ADDING_FAVORITES_REJECTED
 } from '../actions/types';
 
 const initialState = {
@@ -12,12 +12,12 @@ const initialState = {
 
 const favoriteConcertsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADDING_FAVORITE_CONCERTS:
+    case ADDING_FAVORITES:
       return {
         ...state,
         loading: true,
       }
-    case ADDING_FAVORITE_CONCERTS_RESOLVED:
+    case ADDING_FAVORITES_RESOLVED:
       return {
         ...state,
         favorites: {
@@ -26,7 +26,7 @@ const favoriteConcertsReducer = (state = initialState, action) => {
         },
         loading: false
       }
-    case ADDING_FAVORITE_CONCERTS_REJECTED:
+    case ADDING_FAVORITES_REJECTED:
       return {
         ...state,
         loading: false,
