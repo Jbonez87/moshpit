@@ -10,6 +10,10 @@ import {
   ADDING_FAVORITES_REJECTED
 } from './types';
 
+import {
+  formatResponse
+} from '../utils';
+
 import key from '../../config';
 
 export const fetchConcertsByZip = query => async dispatch => {
@@ -38,7 +42,7 @@ export const fetchConcertsByZip = query => async dispatch => {
     } else {
       dispatch({
         type: FETCHING_CONCERTS_RESOLVED,
-        payload: response
+        payload: formatResponse(response)
       });
     }
   } catch (e) {
@@ -70,7 +74,7 @@ export const fetchConcertsByCity = query => async dispatch => {
     } else {
       dispatch({
         type: FETCHING_CONCERTS_RESOLVED,
-        payload: response
+        payload: formatResponse(response)
       });
     }
   } catch (e) {
@@ -93,10 +97,15 @@ export const fetchConcert = id => async dispatch => {
         type: FETCHING_CONCERT_REJECTED,
         payload: request.statusText
       });
+    } else if(!response._embedded) {
+      dispatch({
+        type: FETCHING_CONCERT_REJECTED,
+        payload: 'Concert not found'
+      });
     } else {
       dispatch({
         type: FETCHING_CONCERT_RESOLVED,
-        payload: response
+        payload: formatResponse(response)
       });
     }
   } catch (e) {

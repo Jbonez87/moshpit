@@ -1,8 +1,11 @@
-export const massageQuery = (query, key) => {
-  let url;
-  if (isNaN(query)) {
-    url = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${key}&city=${query}`;
-  }
-  url = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${key}&postalCode=${query}`;
-  return url;
+export const formatResponse = response => {
+  const concertMap = response._embedded.events.map(event => ({
+    [event.id]: event
+  }));
+  const concertObj = {
+    concerts: Object.assign({}, ...concertMap),
+    page: response.page,
+    links: response._links
+  };
+  return concertObj;
 }
