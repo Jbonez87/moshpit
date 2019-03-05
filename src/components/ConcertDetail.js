@@ -27,8 +27,8 @@ class ConcertDetail extends Component {
   }
   handleFavorite = e => {
     e.preventDefault();
-    if (this.props.favorites.hasOwnProperty(this.props.concert)) return;
-    this.props.addingFavorites(this.props.concert);
+    if (this.props.favorites.hasOwnProperty(this.props.concert.event)) return;
+    this.props.addingFavorites(this.props.concert.event);
   }
   handleImageError = e => {
     e.target.src = placeHolder;
@@ -37,22 +37,14 @@ class ConcertDetail extends Component {
     return nextProps.concert != this.props.concert;
   }
   render() {
-    if(!this.props.concert._embedded) return <p>Loading...</p>;
+    if(!this.props.concert.events) return <p>Loading...</p>;
 
     const {
-      concert: {
-        _embedded: {
-          events
-        }
-      },
+      concert,
       error,
       isLoading
     } = this.props;
-    const eventsMap = events.map(event => ({
-      [event.id]: event
-    }));
-    const eventObj = Object.assign({}, ...eventsMap);
-    const event = Object.values(eventObj).map(({id, name, images}) => (
+    const event = Object.values(concert.events).map(({id, name, images}) => (
       <div
         key={id}
       >

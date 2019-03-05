@@ -3,7 +3,7 @@ export const formatResponse = response => {
     [event.id]: event
   }));
   const concertObj = {
-    concerts: Object.assign({}, ...concertMap),
+    events: Object.assign({}, ...concertMap),
     page: response.page,
     links: response._links
   };

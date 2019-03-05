@@ -74,7 +74,7 @@ class Home extends Component {
      * This checks to make sure that the _embedded object and events array
      * are defined in the concerts object
      */
-    const concertsMap = (concerts._embedded && concerts._embedded.events) ? concerts._embedded.events.map(({ id, name, images }) => (
+    const concertsMap = (concerts.events) ? Object.values(concerts.events).map(({ id, name, images }) => (
       <div
         key={id}
         className="event-item"

@@ -128,6 +128,6 @@ export const addingFavorites = concert => (dispatch, getState) => {
   }
   dispatch({
     type: ADDING_FAVORITES_RESOLVED,
-    payload: getState().concertsReducer.concerts[concert.id]
+    payload: getState().concertsReducer.concerts.events[concert.id]
   });
 }
