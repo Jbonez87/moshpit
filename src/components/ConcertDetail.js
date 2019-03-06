@@ -27,8 +27,15 @@ class ConcertDetail extends Component {
   }
   handleFavorite = e => {
     e.preventDefault();
-    if (this.props.favorites.hasOwnProperty(this.props.concert.event)) return;
-    this.props.addingFavorites(this.props.concert.event);
+    const {
+      match: {
+        params: {
+          id
+        }
+      }
+    } = this.props;
+    if (this.props.favorites.hasOwnProperty(id)) return;
+    this.props.addingFavorites(this.props.concert.events[id]);
   }
   handleImageError = e => {
     e.target.src = placeHolder;
