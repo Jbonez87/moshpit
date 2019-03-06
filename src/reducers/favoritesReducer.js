@@ -10,7 +10,7 @@ const initialState = {
   error: null
 }
 
-const favoriteConcertsReducer = (state = initialState, action) => {
+const favoritesReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADDING_FAVORITES:
       return {
@@ -37,4 +37,4 @@ const favoriteConcertsReducer = (state = initialState, action) => {
   }
 }
 
-export default favoriteConcertsReducer;
+export default favoritesReducer;

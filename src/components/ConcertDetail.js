@@ -57,7 +57,7 @@ class ConcertDetail extends Component {
       >
         <h2>{name}</h2>
         <img 
-          className = "event-image"
+          className="event-image"
           src={images[0].url}
           onError={this.handleError}
         />

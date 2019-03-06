@@ -22,19 +22,20 @@ class Favorites extends Component {
         key={id}
         className="concert-wrapper"
       >
+        <div
+          className="concert-item"
+        >
+          <h2>{name}</h2>
+        </div>
         <Link
           to={`/concerts/${id}`}
         >
           <img
-            className="poster"
-            src={PlaceHolder} 
+            className="event-image"
+            src={images[0].url} 
             alt={`${name} Poster`} 
           />
         </Link>
-        <div
-          className="movie-item"
-        >
-        </div>
       </div>
     )) : hasError;
     return (
