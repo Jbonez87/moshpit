@@ -9,6 +9,9 @@ import {
 import PlaceHolder from '../static/images/placeholder.jpg';
 
 class Favorites extends Component {
+  handleImageError = e => {
+    e.target.src = PlaceHolder;
+  }
   render() {
     const {
       favorites,
@@ -32,6 +35,7 @@ class Favorites extends Component {
         >
           <img
             className="event-image"
+            onError={this.handleImageError}
             src={images[0].url} 
             alt={`${name} Poster`} 
           />
