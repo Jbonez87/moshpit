@@ -93,7 +93,6 @@
 }
 
 .form-wrapper input[type="submit"]:active {
-  background: rgb(41, 41, 41);
 	background: linear-gradient(rgb(57, 57, 57), rgb(41, 41, 41));
 	box-shadow: 0 0.0625rem 0 rgb(0, 0, 0), inset 0.0625rem 0 0.0625rem rgb(34, 34, 34);
 	top: 0.0625rem;
@@ -120,4 +119,15 @@
   min-width: 40rem;
   max-height: 26.6875rem;
   max-width: 40rem;
+}
+
+.ticket-container {
+  margin: 0.3125rem auto;
+  padding: 1.2rem;
+  background: rgb(27, 116, 231);
+  width: 13rem;
+}
+
+.ticket-container a:hover {
+  color: rgb(235, 225, 245);
 }

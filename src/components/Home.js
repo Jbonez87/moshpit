@@ -74,11 +74,12 @@ class Home extends Component {
      * This checks to make sure that the _embedded object and events array
      * are defined in the concerts object
      */
-    const concertsMap = (concerts.events) ? Object.values(concerts.events).map(({ id, name, images }) => (
+    const concertsMap = (concerts.events) ? Object.values(concerts.events).map(({ id, name, images, url }) => (
       <div
         key={id}
         className="event-item"
       >
+        <h2>{name}</h2>
         <Link
           to={`/concerts/${id}`}
         >
@@ -88,7 +89,16 @@ class Home extends Component {
             onError={this.handleError}
           />
         </Link>
-        <p>{name}</p>
+        <div
+          className="ticket-container"
+        >
+          <a
+            href={url}
+            target="_blank"
+          >
+            Buy Tickets
+          </a>
+        </div>
       </div>
     )) : '';
 
