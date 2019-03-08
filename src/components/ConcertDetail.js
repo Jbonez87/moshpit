@@ -88,9 +88,10 @@ class ConcertDetail extends Component {
           event
         }
         <button
+          className="back-arrow"
           onClick={this.goBack}
         >
-          Go back
+          &#10140;
         </button>
         <button
           onClick={this.handleFavorite}

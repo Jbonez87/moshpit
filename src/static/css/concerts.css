@@ -125,9 +125,13 @@
   margin: 0.3125rem auto;
   padding: 1.2rem;
   background: rgb(27, 116, 231);
-  width: 13rem;
+  width: 9rem;
 }
 
 .ticket-container a:hover {
   color: rgb(235, 225, 245);
+}
+
+.back-arrow {
+  transform: rotate(180deg);
 }
