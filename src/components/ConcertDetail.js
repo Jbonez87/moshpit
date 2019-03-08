@@ -40,6 +40,7 @@ class ConcertDetail extends Component {
   handleImageError = e => {
     e.target.src = placeHolder;
   }
+  goBack = () => this.props.history.push('/')
   shouldComponentUpdate(nextProps, nextState) {
     return nextProps.concert != this.props.concert;
   }
@@ -76,6 +77,11 @@ class ConcertDetail extends Component {
         {
           event
         }
+        <button
+          onClick={this.goBack}
+        >
+          Go back
+        </button>
         <button
           onClick={this.handleFavorite}
         >
