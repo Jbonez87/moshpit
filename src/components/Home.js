@@ -89,16 +89,13 @@ class Home extends Component {
             onError={this.handleError}
           />
         </Link>
-        <div
+        <a
           className="ticket-container"
+          href={url}
+          target="_blank"
         >
-          <a
-            href={url}
-            target="_blank"
-          >
-            Buy Tickets
-          </a>
-        </div>
+          Buy Tickets
+        </a>
       </div>
     )) : '';
 
