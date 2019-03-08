@@ -52,7 +52,7 @@ class ConcertDetail extends Component {
       error,
       isLoading
     } = this.props;
-    const event = Object.values(concert.events).map(({id, name, images}) => (
+    const event = Object.values(concert.events).map(({id, name, images, url}) => (
       <div
         key={id}
       >
@@ -62,6 +62,16 @@ class ConcertDetail extends Component {
           src={images[0].url}
           onError={this.handleError}
         />
+        <div
+          className="ticket-container"
+        >
+          <a
+            href={url}
+            target="_blank"
+          >
+            Buy Tickets
+          </a>
+        </div>
       </div>
     ))
     return (
