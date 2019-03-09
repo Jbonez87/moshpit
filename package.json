@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "babel-node server.js",
-    "dev": "nodemon --exec babel-node --presets @babel/env server.js --ignore src",
+    "dev:experimental": "nodemon --exec babel-node --presets @babel/env server-local.js --ignore src",
     "start": "webpack-dev-server --hot --progress --colors --mode development --open",
-    "build": "webpack --mode production"
+    "dev": "nodemon server.js --ignore src",
+    "server": "node server.js --ignore src",
+    "build": "webpack -p"
   },
   "keywords": [],
   "author": "",
@@ -25,7 +26,6 @@
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "sass-loader": "^7.1.0",
     "webpack-dev-server": "^3.2.0"
   },
   "devDependencies": {
