@@ -26,9 +26,11 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
+    publicPath: '/'
   },
   mode: 'production',
   devServer: {
+    historyApiFallback: true,
     contentBase: path.join(__dirname, 'src', 'static'),
     inline: true,
     port: 3000,
