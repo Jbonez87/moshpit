@@ -31,6 +31,7 @@ module.exports = {
   mode: 'production',
   devServer: {
     historyApiFallback: true,
+    hot: true,
     contentBase: path.join(__dirname, 'src', 'static'),
     inline: true,
     port: 3000,
