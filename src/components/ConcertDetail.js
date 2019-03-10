@@ -66,6 +66,7 @@ class ConcertDetail extends Component {
         <a
           className="ticket-container"
           href={url}
+          rel="noopener noreferrer"
           target="_blank"
         >
           Buy Tickets

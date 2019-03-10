@@ -7,6 +7,7 @@ import {
 
 import routes from './routes';
 import NavBar from './NavBar';
+import Footer from './Footer';
 import '../static/css/app.css';
 
 export default class App extends Component {
@@ -26,6 +27,7 @@ export default class App extends Component {
               />
             ))}
           </Switch>
+          <Footer />
         </div>
       </Router>
     );
