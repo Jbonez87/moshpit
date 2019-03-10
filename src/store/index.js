@@ -12,6 +12,18 @@ import thunk from 'redux-thunk';
 // } from './localStorage';
 import rootReducer from '../reducers';
 
+let middleware;
+if(process.env.NODE_ENV !== 'production') {
+  middleware = [
+    thunk,
+    logger
+  ]
+} else {
+  middleware = [
+    thunk
+  ]
+}
+
 // const persistedState = loadState();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -19,7 +31,7 @@ const store = createStore(
   rootReducer,
   // persistedState,
   composeEnhancers(
-    applyMiddleware(thunk, logger)
+    applyMiddleware(...middleware)
   )
 );
 
