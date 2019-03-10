@@ -168,6 +168,18 @@ a:hover,
 button:focus {
   outline: none;
 }
+
+footer {
+  background: rgb(0, 0, 0);
+  font-size: 1.125rem;
+  display: block;
+  padding: 0.625rem;
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  overflow: hidden;
+  clear: both;
+}
 /* CSS Reset */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
