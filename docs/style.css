@@ -108,7 +108,11 @@
 }
 
 .event-item {
-  padding: 0.3125rem 0 0.3125rem 0;
+  margin: 2rem 0 2.8rem 0;
+}
+
+.event-item h2 {
+  padding: 0 0 0.8rem 0;
 }
 
 .event-image {
@@ -120,7 +124,7 @@
 
 .ticket-container {
   display: block;
-  margin: 0.3125rem auto;
+  margin: 1rem auto;
   padding: 1.2rem;
   background: rgb(27, 116, 231);
   width: 9rem;
@@ -173,13 +177,18 @@ footer {
   background: rgb(0, 0, 0);
   font-size: 1.125rem;
   display: block;
-  padding: 0.625rem;
+  height: 2.5rem;
   width: 100vw;
   position: fixed;
   bottom: 0;
   overflow: hidden;
   clear: both;
 }
+
+footer p {
+  padding: 0.9rem;
+}
+
 /* CSS Reset */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
