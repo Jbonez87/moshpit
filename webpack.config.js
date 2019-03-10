@@ -1,11 +1,11 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const presets = [
   '@babel/preset-env',
   '@babel/preset-react'
-]
+];
 const plugins = [
   '@babel/plugin-proposal-object-rest-spread',
   '@babel/plugin-proposal-class-properties',
@@ -18,7 +18,7 @@ const plugins = [
       useESModules: true
     }
   ]
-]
+];
 
 module.exports = {
   devtool: 'source-map',

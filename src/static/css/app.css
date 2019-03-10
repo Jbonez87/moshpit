@@ -12,3 +12,7 @@ a:hover,
 .active {
   color: rgb(43, 228, 212);
 }
+
+button:focus {
+  outline: none;
+}

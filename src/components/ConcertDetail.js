@@ -77,7 +77,7 @@ class ConcertDetail extends Component {
         className="details-wrapper"
       >
         {
-          isLoading ? (<p>Loading...</p>) : ''
+          isLoading ? (<Loading />) : ''
         }
         {
           error ? (<p>{error}</p>) : ''
