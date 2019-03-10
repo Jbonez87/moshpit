@@ -21,7 +21,7 @@ export const fetchConcertsByZip = query => async dispatch => {
     type: FETCHING_CONCERTS
   })
   try {
-    let url = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${key}&postalCode=${query}`
+    let url = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${key}&postalCode=${query}`;
     const request = await fetch(url);
     const response = await request.json();
     if (!request.ok) {
@@ -58,7 +58,7 @@ export const fetchConcertsByCity = query => async dispatch => {
     type: FETCHING_CONCERTS
   })
   try {
-    let url = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${key}&city=${query}`
+    let url = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${key}&city=${query}`;
     const request = await fetch(url);
     const response = await request.json();
     if (!request.ok) {

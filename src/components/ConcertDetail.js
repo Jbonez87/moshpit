@@ -8,7 +8,8 @@ import {
   addingFavorites
 } from '../actions';
 
-// import loadingGif from '../static/images/heavylogointrohorizonatal_done.gif';
+import Loading from './Loading';
+
 import placeHolder from '../static/images/placeholder.jpg';
 
 // import '../static/css/details.scss';
@@ -45,7 +46,7 @@ class ConcertDetail extends Component {
     return nextProps.concert != this.props.concert;
   }
   render() {
-    if(!this.props.concert.events) return <p>Loading...</p>;
+    if(!this.props.concert.events) return <Loading />;
 
     const {
       concert,
@@ -89,14 +90,17 @@ class ConcertDetail extends Component {
         }
         <button
           className="back-arrow"
+          title="Back to search results"
           onClick={this.goBack}
         >
           &#10140;
         </button>
         <button
+          className="favorite"
           onClick={this.handleFavorite}
+          title="Add to favorites"
         >
-          Add to Favorites
+          &#x2661;
         </button>
       </div>
     );

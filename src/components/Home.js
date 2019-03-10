@@ -6,9 +6,9 @@ import {
   Link
 } from 'react-router-dom';
 
-import '../static/css/concerts.css';
+import Loading from './Loading';
 
-import loadingGif from '../static/images/heavylogointrohorizonatal_done.gif';
+import '../static/css/concerts.css';
 import placeHolder from '../static/images/placeholder.jpg';
 
 import {
@@ -129,11 +129,7 @@ class Home extends Component {
             error
           } 
           {
-            isLoading ? <img
-              className="loading" 
-              src={loadingGif}
-              alt="Loading..."
-            /> : ''
+            isLoading ? <Loading /> : ''
           } 
           {
             concertsMap
