@@ -133,6 +133,22 @@
 
 .back-arrow {
   transform: rotate(180deg);
+  border-radius: 50%;
+  background: rgb(27, 116, 231);
+  color: rgb(255, 255, 255);
+}
+
+.favorite {
+  background: rgb(0, 0, 0);
+  color: rgb(216, 0, 12);
+}
+
+.favorite, .back-arrow {
+  padding: 0.8rem;
+  margin: 0.3rem;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
 }
 nav a, a {
   margin: 0 1rem 0 1rem;
@@ -147,6 +163,10 @@ nav a:hover,
 a:hover, 
 .active {
   color: rgb(43, 228, 212);
+}
+
+button:focus {
+  outline: none;
 }
 /* CSS Reset */
 html, body, div, span, applet, object, iframe,
