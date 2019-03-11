@@ -133,7 +133,6 @@
 .back-arrow {
   transform: rotate(180deg);
   border-radius: 50%;
-  border: 0.125rem solid rgb(27, 116, 231);
   background: rgb(27, 116, 231);
   color: rgb(255, 255, 255);
 }
