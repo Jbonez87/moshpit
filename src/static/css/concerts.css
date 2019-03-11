@@ -139,6 +139,10 @@
 
 .favorite {
   background: rgb(0, 0, 0);
+  color: rgb(59, 58, 58);
+}
+
+.red {
   color: rgb(216, 0, 12);
 }
 
