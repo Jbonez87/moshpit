@@ -8,7 +8,6 @@ nav a, a {
 }
 
 nav a:hover, 
-a:hover, 
 .active {
   color: rgb(43, 228, 212);
 }

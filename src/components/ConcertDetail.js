@@ -91,14 +91,18 @@ class ConcertDetail extends Component {
           title="Back to search results"
           onClick={this.goBack}
         >
-          &#10140;
+          <span>
+            &#10140;
+          </span>
         </button>
         <button
           className="favorite"
           onClick={this.handleFavorite}
           title="Add to favorites"
         >
-          &#x2661;
+          <span>
+            &hearts;
+          </span>
         </button>
       </div>
     );
