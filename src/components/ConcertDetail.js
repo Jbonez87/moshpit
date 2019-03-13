@@ -37,11 +37,13 @@ class ConcertDetail extends Component {
       }
     } = this.props;
     if (this.props.favorites.hasOwnProperty(id)) {
+      console.log(id);
       this.props.removingFavorites(id);
       e.target.classList.remove('red');
+    } else {
+      this.props.addingFavorites(this.props.concert.events[id]);
+      e.target.classList.add('red');
     }
-    this.props.addingFavorites(this.props.concert.events[id]);
-    e.target.classList.add('red');
   }
   handleImageError = e => {
     e.target.src = placeHolder;

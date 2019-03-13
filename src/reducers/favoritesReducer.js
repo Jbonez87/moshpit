@@ -32,11 +32,12 @@ const favoritesReducer = (state = initialState, action) => {
         loading: false
       }
     case REMOVING_FAVORITES_RESOLVED:
+      const newFavorites = Object.assign({}, state.favorites);
+      delete newFavorites[action.payload.id]
       return {
         ...state,
         favorites: {
-          [action.payload.id]: value, 
-          ...state.favorites
+          ...newFavorites
         },
         loading: false
       }
