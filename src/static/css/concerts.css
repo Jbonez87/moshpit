@@ -135,11 +135,20 @@
   border-radius: 50%;
   background: rgb(27, 116, 231);
   color: rgb(255, 255, 255);
+  font-size: 1rem;
 }
 
 .favorite {
+  position: relative;
   background: rgb(0, 0, 0);
   color: rgb(59, 58, 58);
+  margin: 1rem;
+  font-size: 1.6rem;
+}
+
+.favorite span {
+  position: absolute;
+  top: -0.7rem;
 }
 
 .red {
@@ -148,8 +157,6 @@
 
 .favorite, .back-arrow {
   padding: 0.8rem;
-  margin: 0.3rem;
   border: none;
-  font-size: 1rem;
   cursor: pointer;
 }
