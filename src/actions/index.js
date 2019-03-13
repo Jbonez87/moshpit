@@ -17,7 +17,8 @@ import {
   formatResponse
 } from '../utils';
 
-import key from '../../config';
+// import key from '../../config';
+const key = process.env.APIKEY;
 
 export const fetchConcertsByZip = query => async dispatch => {
   dispatch({

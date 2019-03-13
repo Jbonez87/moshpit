@@ -6,7 +6,6 @@ import {
   REMOVING_FAVORITES_REJECTED,
   REMOVING_FAVORITES_RESOLVED
 } from '../actions/types';
-import { __values } from 'tslib';
 
 const initialState = {
   favorites: {},
