@@ -37,7 +37,6 @@ class ConcertDetail extends Component {
       }
     } = this.props;
     if (this.props.favorites.hasOwnProperty(id)) {
-      console.log(id);
       this.props.removingFavorites(id);
       e.target.classList.remove('red');
     } else {
