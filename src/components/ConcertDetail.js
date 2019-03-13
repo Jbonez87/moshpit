@@ -5,7 +5,8 @@ import {
 
 import {
   fetchConcert,
-  addingFavorites
+  addingFavorites,
+  removingFavorites
 } from '../actions';
 
 import Loading from './Loading';
@@ -35,7 +36,10 @@ class ConcertDetail extends Component {
         }
       }
     } = this.props;
-    if (this.props.favorites.hasOwnProperty(id)) return;
+    if (this.props.favorites.hasOwnProperty(id)) {
+      this.props.removingFavorites(id);
+      e.target.classList.remove('red');
+    }
     this.props.addingFavorites(this.props.concert.events[id]);
     e.target.classList.add('red');
   }
@@ -116,14 +120,17 @@ const mapDispatchToProps = dispatch => ({
   },
   addingFavorites(concert) {
     dispatch(addingFavorites(concert))
+  },
+  removingFavorites(concert) {
+    dispatch(removingFavorites(concert))
   }
-})
+});
 
 const mapStateToProps = (state, props) => ({
   concert: state.concertReducer.concert,
   isLoading: state.concertReducer.isLoading,
   error: state.concertReducer.error,
   favorites: state.favoritesReducer.favorites
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConcertDetail);

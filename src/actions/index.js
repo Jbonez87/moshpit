@@ -7,7 +7,10 @@ import {
   FETCHING_CONCERT_REJECTED,
   ADDING_FAVORITES,
   ADDING_FAVORITES_RESOLVED,
-  ADDING_FAVORITES_REJECTED
+  ADDING_FAVORITES_REJECTED,
+  REMOVING_FAVORITES,
+  REMOVING_FAVORITES_RESOLVED,
+  REMOVING_FAVORITES_REJECTED
 } from './types';
 
 import {
@@ -129,5 +132,21 @@ export const addingFavorites = concert => (dispatch, getState) => {
   dispatch({
     type: ADDING_FAVORITES_RESOLVED,
     payload: getState().concertsReducer.concerts.events[concert.id]
+  });
+}
+
+export const removingFavorites = id => (dispatch, getState) => {
+  dispatch({
+    type: REMOVING_FAVORITES
+  });
+  if (!id) {
+    dispatch({
+      type: REMOVING_FAVORITES_REJECTED,
+      payload: 'Concert not found'
+    });
+  }
+  dispatch({
+    type: REMOVING_FAVORITES_RESOLVED,
+    payload: getState().favoritesReducer.favorites[id]
   });
 }
