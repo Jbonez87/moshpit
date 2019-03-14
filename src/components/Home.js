@@ -81,6 +81,7 @@ class Home extends Component {
       >
         <h2>{name}</h2>
         <Link
+          exact
           to={`/concerts/${id}`}
         >
           <img
