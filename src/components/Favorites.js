@@ -20,7 +20,7 @@ class Favorites extends Component {
     } = this.props;
     const hasError = error ? (<p>{error}</p>) : (<p>No favorites yet</p>);
     const favoriteVals = Object.values(favorites);
-    const favoritesList = favoriteVals.length ? favoriteVals.map(({id, name, images}) => (
+    const favoritesList = favoriteVals.length ? favoriteVals.map(({id, name, images, url }) => (
       <div
         key={id}
         className="concert-wrapper"
@@ -40,6 +40,14 @@ class Favorites extends Component {
             alt={`${name} Poster`} 
           />
         </Link>
+        <a
+          className="ticket-container"
+          href={url}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Buy Tickets
+        </a>
       </div>
     )) : hasError;
     return (
