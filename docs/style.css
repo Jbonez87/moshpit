@@ -161,6 +161,15 @@
   border: none;
   cursor: pointer;
 }
+.about-container {
+  margin: 1.25rem auto;
+  max-width: 55vw;
+  min-width: 25vw;
+}
+
+.about-container p {
+  text-align: left;
+}
 nav a, a {
   margin: 0 1rem 0 1rem;
   font-size: 1.8rem;
