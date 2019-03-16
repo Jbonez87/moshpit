@@ -10,7 +10,7 @@ const About = () => (
       thousands of dollars to have a good time.<br />
       <br />
       Here at MoshPit, we're all about bringing people together and keeping<br />
-      costs low, for both the venue and the customer.
+      costs low for venues and customers.
     </p>
   </div>
 );
