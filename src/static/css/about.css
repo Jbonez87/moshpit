@@ -1,0 +1,9 @@
+.about-container {
+  margin: 1.25rem auto;
+  max-width: 55vw;
+  min-width: 25vw;
+}
+
+.about-container p {
+  text-align: left;
+}
