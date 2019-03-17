@@ -1,4 +1,4 @@
-export const formatResponse = response => {
+export const formatEventResponse = response => {
   const concertMap = response._embedded.events.map(event => ({
     [event.id]: event
   }));

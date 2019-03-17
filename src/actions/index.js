@@ -14,10 +14,9 @@ import {
 } from './types';
 
 import {
-  formatResponse
+  formatEventResponse
 } from '../utils';
 
-// import key from '../../config';
 const key = process.env.APIKEY;
 
 export const fetchConcertsByZip = query => async dispatch => {
@@ -46,7 +45,7 @@ export const fetchConcertsByZip = query => async dispatch => {
     } else {
       dispatch({
         type: FETCHING_CONCERTS_RESOLVED,
-        payload: formatResponse(response)
+        payload: formatEventResponse(response)
       });
     }
   } catch (e) {
@@ -78,7 +77,7 @@ export const fetchConcertsByCity = query => async dispatch => {
     } else {
       dispatch({
         type: FETCHING_CONCERTS_RESOLVED,
-        payload: formatResponse(response)
+        payload: formatEventResponse(response)
       });
     }
   } catch (e) {
@@ -109,7 +108,7 @@ export const fetchConcert = id => async dispatch => {
     } else {
       dispatch({
         type: FETCHING_CONCERT_RESOLVED,
-        payload: formatResponse(response)
+        payload: formatEventResponse(response)
       });
     }
   } catch (e) {
