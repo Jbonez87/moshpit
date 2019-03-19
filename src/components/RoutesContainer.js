@@ -4,22 +4,38 @@ import {
   Switch,
   withRouter
 } from 'react-router-dom';
+import {
+  TransitionGroup,
+  CSSTransition
+} from "react-transition-group";
+
+import '../static/css/routes.css';
 
 import routes from './routes';
 
-const RoutesContainer = () => (
+const RoutesContainer = ({ location }) => (
   <div>
-    <Switch>
-      {routes.map(route => 
-      (
-        <Route
-          exact
-          key={route.id} 
-          path={route.path}
-          component={route.component}
-        />
-      ))}
-    </Switch>
+    <TransitionGroup className="transition-group">
+      <CSSTransition
+        key={location.key}
+        timeout={{ enter: 300, exit: 300 }}
+        classNames="fade"
+      >
+        <Switch
+          location={location}
+        >
+          {routes.map(route => 
+          (
+            <Route
+              exact
+              key={route.id} 
+              path={route.path}
+              component={route.component}
+            />
+          ))}
+        </Switch>
+      </CSSTransition>
+    </TransitionGroup>
   </div>
 );
 
