@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import {
   HashRouter as Router,
-  Route,
-  Switch
 } from 'react-router-dom';
 
-import routes from './routes';
 import NavBar from './NavBar';
+import RoutesContainer from './RoutesContainer';
 import Footer from './Footer';
 import '../static/css/app.css';
 
@@ -18,17 +16,7 @@ export default class App extends Component {
       >
         <div>
           <NavBar />
-          <Switch>
-            {routes.map(route => 
-            (
-              <Route
-                exact
-                key={route.id} 
-                path={route.path}
-                component={route.component}
-              />
-            ))}
-          </Switch>
+          <RoutesContainer />
           <Footer />
         </div>
       </Router>
