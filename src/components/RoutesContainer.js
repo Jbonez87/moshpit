@@ -17,23 +17,27 @@ const RoutesContainer = ({ location }) => (
   <div>
     <TransitionGroup className="transition-group">
       <CSSTransition
-        key={location.key}
+        key={location.pathname}
         timeout={{ enter: 300, exit: 300 }}
         classNames="fade"
       >
-        <Switch
-          location={location}
+        <section
+          className="route-section"
         >
-          {routes.map(route => 
-          (
-            <Route
-              exact
-              key={route.id} 
-              path={route.path}
-              component={route.component}
-            />
-          ))}
-        </Switch>
+          <Switch
+            location={location}
+          >
+            {routes.map(route => 
+            (
+              <Route
+                exact
+                key={route.id} 
+                path={route.path}
+                component={route.component}
+              />
+            ))}
+          </Switch>
+        </section>
       </CSSTransition>
     </TransitionGroup>
   </div>
