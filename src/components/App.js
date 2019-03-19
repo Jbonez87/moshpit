@@ -8,18 +8,16 @@ import RoutesContainer from './RoutesContainer';
 import Footer from './Footer';
 import '../static/css/app.css';
 
-export default class App extends Component {
-  render() {
-    return (
-      <Router
-        basename={process.env.PUBLIC_URL}
-      >
-        <div>
-          <NavBar />
-          <RoutesContainer />
-          <Footer />
-        </div>
-      </Router>
-    );
-  }
-}
+const App = () => (
+  <Router
+    basename={process.env.PUBLIC_URL}
+  >
+    <div>
+      <NavBar />
+      <RoutesContainer />
+      <Footer />
+    </div>
+  </Router>
+);
+
+export default App;
