@@ -1,3 +1,10 @@
+:root {
+  --error-color: rgb(216, 0, 12);
+  --form-gradient: linear-gradient(rgb(51, 51, 51), rgb(34, 34, 34));
+  --shadow-color: 0 -0.0625rem 0 rgb(0, 0, 0);
+  --ticket-bg: rgb(27, 116, 231);
+}
+
 .loading {
   max-width: 69.75rem;
   max-height: 51.25rem;
@@ -5,11 +12,10 @@
 
 .error {
   padding: .8rem;
-  color: rgb(216, 0, 12);
+  color: var(--error-color);
 }
 
 .form-wrapper form {
-  background: rgb(17, 17, 17);
   background: linear-gradient(rgb(27, 27, 27), rgb(17, 17, 17));
   border: 0.0625rem solid rgb(0, 0, 0);
   border-radius: 0.3125rem;
@@ -22,7 +28,7 @@
 }
 
 .form-wrapper input {
-	background: linear-gradient(rgb(51, 51, 51), rgb(34, 34, 34));	
+	background: var(--form-gradient);	
 	border: 0.0625rem solid rgb(68, 68, 68);
 	border-radius: 0.3125rem 0 0 0.3125rem;
 	box-shadow: 0 0.125rem 0 rgb(0, 0, 0);
@@ -35,7 +41,7 @@
 	height: 3rem;
 	margin: 0;
 	padding: 0 0.625rem;
-	text-shadow: 0 -0.0625rem 0 rgb(0, 0, 0);
+	text-shadow: var(--shadow-color);
 	width: 12.5rem;
 }
 
@@ -59,7 +65,7 @@
 }
 
 .form-wrapper input[type="submit"] {
-	background: linear-gradient(rgb(51, 51, 51), rgb(34, 34, 34));
+	background: var(--form-gradient);
 	box-sizing: border-box;
 	border: 0.0625rem solid rgb(68, 68, 68);
 	border-left-color: rgb(0, 0, 0);
@@ -76,7 +82,7 @@
 	margin: 0;
 	padding: 0;
 	position: relative;
-	text-shadow: 0 -0.0625rem 0 rgb(0, 0, 0);
+	text-shadow: var(--shadow-color);
 	width: 5rem;
 }
 
@@ -125,7 +131,7 @@
   display: block;
   margin: 1rem auto;
   padding: 1.2rem;
-  background: rgb(27, 116, 231);
+  background: var(--ticket-bg);
   width: 10rem;
   font-weight: 700;
 }
@@ -133,7 +139,7 @@
 .back-arrow {
   transform: rotate(180deg);
   border-radius: 50%;
-  background: rgb(27, 116, 231);
+  background: var(--ticket-bg);
   color: rgb(255, 255, 255);
   font-size: 1rem;
 }
@@ -152,7 +158,7 @@
 }
 
 .red {
-  color: rgb(216, 0, 12);
+  color: var(--error-color);
 }
 
 .favorite, .back-arrow {
