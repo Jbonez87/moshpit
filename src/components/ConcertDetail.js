@@ -13,8 +13,6 @@ import Loading from './Loading';
 
 import placeHolder from '../static/images/placeholder.jpg';
 
-// import '../static/css/details.scss';
-
 class ConcertDetail extends Component {
   componentDidMount() {
     const {

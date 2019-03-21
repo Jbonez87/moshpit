@@ -11,9 +11,6 @@ export const formatEventsResponse = response => {
 }
 
 export const formatEventResponse = response => {
-  // const concertMap = Object.values(response).map(event => ({
-  //   [event.id]: event
-  // }));
   const concertObj = {
     [response.id]: response
   }

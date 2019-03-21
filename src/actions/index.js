@@ -92,42 +92,17 @@ export const fetchConcertsByCity = query => async dispatch => {
 export const fetchConcert = id => (dispatch, getState) => {
   dispatch({
     type: FETCHING_CONCERT
-  })
+  });
   if(!getState().concertsReducer.concerts.events[id]) {
     dispatch({
       type: FETCHING_CONCERT_REJECTED,
       payload: 'Event not found or no longer available'
-    })
+    });
   }
   dispatch({
     type: FETCHING_CONCERT_RESOLVED,
     payload: formatEventResponse(getState().concertsReducer.concerts.events[id])
-  })
-  // try {
-  //   const request = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?apikey=${key}&id=${id}`);
-  //   const response = await request.json();
-  //   if (!request.ok) {
-  //     dispatch({
-  //       type: FETCHING_CONCERT_REJECTED,
-  //       payload: request.statusText
-  //     });
-  //   } else if(!response._embedded) {
-  //     dispatch({
-  //       type: FETCHING_CONCERT_REJECTED,
-  //       payload: 'Concert not found'
-  //     });
-  //   } else {
-  //     dispatch({
-  //       type: FETCHING_CONCERT_RESOLVED,
-  //       payload: formatEventResponse(response)
-  //     });
-  //   }
-  // } catch (e) {
-  //   dispatch({
-  //     type: FETCHING_CONCERT_REJECTED,
-  //     payload: e
-  //   });
-  // }
+  });
 }
 
 export const addingFavorites = concert => (dispatch, getState) => {
