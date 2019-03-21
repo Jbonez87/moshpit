@@ -6,10 +6,10 @@ import {
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
-// import {
-//   loadState,
-//   saveState
-// } from './localStorage';
+import {
+  loadState,
+  saveState
+} from './localStorage';
 import rootReducer from '../reducers';
 
 let middleware;
@@ -24,17 +24,17 @@ if(process.env.NODE_ENV !== 'production') {
   ]
 }
 
-// const persistedState = loadState();
+const persistedState = loadState();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   rootReducer,
-  // persistedState,
+  persistedState,
   composeEnhancers(
     applyMiddleware(...middleware)
   )
 );
 
-// store.subscribe(() => saveState(store.getState()));
+store.subscribe(() => saveState(store.getState()));
 
 export default store;
