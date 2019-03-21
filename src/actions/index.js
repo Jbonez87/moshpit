@@ -14,6 +14,7 @@ import {
 } from './types';
 
 import {
+  formatEventsResponse,
   formatEventResponse
 } from '../utils';
 
@@ -45,7 +46,7 @@ export const fetchConcertsByZip = query => async dispatch => {
     } else {
       dispatch({
         type: FETCHING_CONCERTS_RESOLVED,
-        payload: formatEventResponse(response)
+        payload: formatEventsResponse(response)
       });
     }
   } catch (e) {
@@ -77,7 +78,7 @@ export const fetchConcertsByCity = query => async dispatch => {
     } else {
       dispatch({
         type: FETCHING_CONCERTS_RESOLVED,
-        payload: formatEventResponse(response)
+        payload: formatEventsResponse(response)
       });
     }
   } catch (e) {
@@ -100,7 +101,7 @@ export const fetchConcert = id => (dispatch, getState) => {
   }
   dispatch({
     type: FETCHING_CONCERT_RESOLVED,
-    payload: getState().concertsReducer.concerts.events[id]
+    payload: formatEventResponse(getState().concertsReducer.concerts.events[id])
   })
   // try {
   //   const request = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?apikey=${key}&id=${id}`);

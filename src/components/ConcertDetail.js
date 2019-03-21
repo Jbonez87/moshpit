@@ -40,7 +40,7 @@ class ConcertDetail extends Component {
       this.props.removingFavorites(id);
       e.target.classList.remove('red');
     } else {
-      this.props.addingFavorites(this.props.concert.events[id]);
+      this.props.addingFavorites(this.props.concert[id]);
       e.target.classList.add('red');
     }
   }
@@ -52,14 +52,14 @@ class ConcertDetail extends Component {
     return nextProps.concert != this.props.concert;
   }
   render() {
-    if(!this.props.concert.events) return <Loading />;
+    if(!this.props.concert) return <Loading />;
 
     const {
       concert,
       error,
       isLoading
     } = this.props;
-    const event = Object.values(concert.events).map(({id, name, images, url}) => (
+    const event = Object.values(concert).map(({id, name, images, url}) => (
       <div
         key={id}
       >
