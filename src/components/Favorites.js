@@ -6,6 +6,8 @@ import {
   Link
 } from 'react-router-dom';
 
+import '../static/css/favorites.css';
+
 import PlaceHolder from '../static/images/placeholder.jpg';
 
 class Favorites extends Component {
@@ -23,10 +25,10 @@ class Favorites extends Component {
     const favoritesList = favoriteVals.length ? favoriteVals.map(({id, name, images, url }) => (
       <div
         key={id}
-        className="concert-wrapper"
+        className="favorite-wrapper"
       >
         <div
-          className="concert-item"
+          className="favorite-item"
         >
           <h2>{name}</h2>
         </div>
