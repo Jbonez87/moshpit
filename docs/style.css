@@ -167,6 +167,13 @@
   border: none;
   cursor: pointer;
 }
+
+.details-wrapper {
+  margin: 2.5rem;
+}
+.favorite-wrapper {
+  margin: 2.2rem;
+}
 .about-container {
   margin: 1.25rem auto;
   max-width: 55vw;
