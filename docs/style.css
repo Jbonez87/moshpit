@@ -122,8 +122,8 @@
 }
 
 .event-image {
-  min-height: 26.6875rem;
-  min-width: 40rem;
+  /* min-height: 26.6875rem;
+  min-width: 40rem; */
   max-height: 26.6875rem;
   max-width: 40rem;
 }
@@ -171,8 +171,19 @@
 .details-wrapper {
   margin: 2.5rem;
 }
-.favorite-wrapper {
+.favorite-wrapper, .no-favorites {
   margin: 2.2rem;
+}
+
+.remove-container {
+  margin: 0 auto;
+  width: 40rem;
+}
+
+.remove {
+  text-align: right;
+  color: rgb(216, 0, 12);
+  cursor: pointer;
 }
 .about-container {
   margin: 1.25rem auto;
