@@ -35,7 +35,7 @@ class Favorites extends Component {
           className="favorite-item"
         >
           <p
-            onClick={(id) => this.props.removingFavorites(id)}
+            onClick={e => this.props.removingFavorites(id)}
           >X</p>
           <h2>{name}</h2>
         </div>
