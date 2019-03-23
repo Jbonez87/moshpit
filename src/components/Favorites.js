@@ -6,6 +6,10 @@ import {
   Link
 } from 'react-router-dom';
 
+import {
+  removingFavorites
+} from '../actions';
+
 import '../static/css/favorites.css';
 
 import PlaceHolder from '../static/images/placeholder.jpg';
@@ -30,6 +34,9 @@ class Favorites extends Component {
         <div
           className="favorite-item"
         >
+          <p
+            onClick={(id) => this.props.removingFavorites(id)}
+          >X</p>
           <h2>{name}</h2>
         </div>
         <Link
@@ -71,6 +78,12 @@ const mapStateToProps = (state, props) => ({
   favorites: state.favoritesReducer.favorites,
   isLoading: state.favoritesReducer.isLoading,
   error: state.favoritesReducer.error
+});
+
+const mapDispatchToProps = dispatch => ({
+  removingFavorites(concert) {
+    dispatch(removingFavorites(concert))
+  }
 })
 
-export default connect(mapStateToProps)(Favorites);
+export default connect(mapStateToProps, mapDispatchToProps)(Favorites);
