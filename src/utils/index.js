@@ -13,7 +13,7 @@ export const formatEventsResponse = response => {
 export const formatEventResponse = response => {
   const concertObj = {
     [response.id]: response
-  }
+  };
 
   return concertObj;
 }
