@@ -24,7 +24,7 @@ class Favorites extends Component {
       isLoading,
       error
     } = this.props;
-    const hasError = error ? (<p>{error}</p>) : (<p>No favorites yet</p>);
+    const hasError = error ? (<p className="error">{error}</p>) : (<p className="no-favorites">No favorites yet</p>);
     const favoriteVals = Object.values(favorites);
     const favoritesList = favoriteVals.length ? favoriteVals.map(({id, name, images, url }) => (
       <div
@@ -34,9 +34,17 @@ class Favorites extends Component {
         <div
           className="favorite-item"
         >
-          <p
-            onClick={e => this.props.removingFavorites(id)}
-          >X</p>
+          <div
+            className="remove-container"
+          >
+            <p
+              className="remove"
+              title="Remove from favorites"
+              onClick={e => this.props.removingFavorites(id)}
+            >
+              X
+            </p>
+          </div>
           <h2>{name}</h2>
         </div>
         <Link
