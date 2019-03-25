@@ -18,7 +18,10 @@ import {
   formatEventResponse
 } from '../utils';
 
+
+const baseUrl = process.env.BASEURL;
 const key = process.env.APIKEY;
+
 
 export const fetchConcertsByZip = query => async dispatch => {
   dispatch({
@@ -31,7 +34,7 @@ export const fetchConcertsByZip = query => async dispatch => {
     })
   } else {
     try {
-      let url = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${key}&postalCode=${query}`;
+      let url = `${baseUrl}apikey=${key}&postalCode=${query}`;
       const request = await fetch(url);
       const response = await request.json();
       if (!request.ok) {
@@ -71,7 +74,7 @@ export const fetchConcertsByCity = query => async dispatch => {
     })
   } else {
     try {
-      let url = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${key}&city=${query}`;
+      let url = `${baseUrl}apikey=${key}&city=${query}`;
       const request = await fetch(url);
       const response = await request.json();
       if (!request.ok) {
