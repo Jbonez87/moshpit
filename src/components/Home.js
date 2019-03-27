@@ -100,7 +100,6 @@ class Home extends Component {
         className="event-item"
       >
         <h2>{name}</h2>
-        <p>Show Date: {this.handleDate(localDate)}</p>
         <Link
           to={`/concerts/${id}`}
         >
@@ -110,6 +109,7 @@ class Home extends Component {
             onError={this.handleError}
           />
         </Link>
+        <p>Show Date: {this.handleDate(localDate)}</p>
         <a
           className="ticket-container"
           href={url}
