@@ -47,9 +47,11 @@ class Home extends Component {
       this.props.fetchConcertsByZip(encodeURIComponent(search));
     }  
   }
+  // Handler method for broken event images
   handleImageError = e => {
     e.target.src = placeHolder;
   }
+  // Converts localDate to localeDateString with default options
   handleDate = date => {
     const options = {
       weekday: 'long', 
