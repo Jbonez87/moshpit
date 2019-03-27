@@ -5,7 +5,7 @@ const Dotenv = require('dotenv-webpack');
 
 const presets = [
   '@babel/preset-env',
-  '@babel/preset-react'
+  '@babel/preset-react',
 ];
 const plugins = [
   '@babel/plugin-proposal-object-rest-spread',
@@ -16,9 +16,9 @@ const plugins = [
       corejs: false,
       helpers: false,
       regenerator: true,
-      useESModules: true
-    }
-  ]
+      useESModules: true,
+    },
+  ],
 ];
 
 module.exports = {
@@ -27,7 +27,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'docs'),
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: '/',
   },
   mode: 'production',
   devServer: {
@@ -46,17 +46,17 @@ module.exports = {
         options: {
           presets: [...presets],
           plugins: [...plugins],
-        }
+        },
       },
       {
         test: /\.css$/,
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
-        ]
+        ],
       },
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(bmp|png|jpg|gif)$/,
         use: [{
           loader: 'url-loader',
           options: {
@@ -64,18 +64,18 @@ module.exports = {
           },
         }],
       },
-    ]
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       hash: true,
       inject: false,
       template: path.resolve(__dirname, 'src', 'static', 'index.html'),
-      filename: 'index.html'
+      filename: 'index.html',
     }),
     new Dotenv(),
     new MiniCssExtractPlugin({
-      filename: 'style.css'
+      filename: 'style.css',
     }),
   ],
-}
+};
