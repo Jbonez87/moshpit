@@ -50,6 +50,16 @@ class Home extends Component {
   handleImageError = e => {
     e.target.src = placeHolder;
   }
+  handleDate = date => {
+    const options = {
+      weekday: 'long', 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric'
+    }
+    const formattedDate = new Date(date).toLocaleDateString('en-us', options);
+    return formattedDate;
+  }
   render() {
     // user input
     const {
@@ -74,12 +84,23 @@ class Home extends Component {
      * This checks to make sure that the _embedded object and events array
      * are defined in the concerts object
      */
-    const concertsMap = (concerts.events) ? Object.values(concerts.events).map(({ id, name, images, url }) => (
+    const concertsMap = (concerts.events) ? Object.values(concerts.events).map(({
+          id,
+          name,
+          images,
+          url,
+          dates: {
+            start: {
+              localDate
+            }
+          }
+        }) => (
       <div
         key={id}
         className="event-item"
       >
         <h2>{name}</h2>
+        <p>Show Date: {this.handleDate(localDate)}</p>
         <Link
           to={`/concerts/${id}`}
         >
