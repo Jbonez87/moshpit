@@ -121,6 +121,10 @@
   padding: 0 0 0.8rem 0;
 }
 
+.event-item p {
+  padding: 0.8rem;
+}
+
 .event-image {
   /* min-height: 26.6875rem;
   min-width: 40rem; */
