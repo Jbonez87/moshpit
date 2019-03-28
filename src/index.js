@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import {
-  Provider
+  Provider,
 } from 'react-redux';
 
 import store from './store';
