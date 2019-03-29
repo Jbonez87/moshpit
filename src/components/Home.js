@@ -95,6 +95,11 @@ class Home extends Component {
             start: {
               localDate
             }
+          },
+          sales: {
+            public: {
+              startDateTime
+            }
           }
         }) => (
       <div
@@ -112,6 +117,7 @@ class Home extends Component {
           />
         </Link>
         <p>Show Date: {this.handleDate(localDate)}</p>
+        <p>Sale Date: {this.handleDate(startDateTime)}</p>
         <a
           className="ticket-container"
           href={url}
