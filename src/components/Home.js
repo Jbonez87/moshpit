@@ -10,6 +10,9 @@ import Loading from './Loading';
 
 import '../static/css/concerts.css';
 import placeHolder from '../static/images/placeholder.jpg';
+import {
+  formatDate
+} from '../utils';
 
 import {
   fetchConcertsByCity,
@@ -52,16 +55,16 @@ class Home extends Component {
     e.target.src = placeHolder;
   }
   // Converts localDate to localeDateString with default options
-  handleDate = date => {
-    const options = {
-      weekday: 'long', 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric'
-    }
-    const formattedDate = new Date(date).toLocaleDateString('en-us', options);
-    return formattedDate;
-  }
+  // handleDate = date => {
+  //   const options = {
+  //     weekday: 'long', 
+  //     year: 'numeric', 
+  //     month: 'long', 
+  //     day: 'numeric'
+  //   }
+  //   const formattedDate = new Date(date).toLocaleDateString('en-us', options);
+  //   return formattedDate;
+  // }
   render() {
     // user input
     const {
@@ -116,8 +119,8 @@ class Home extends Component {
             onError={this.handleError}
           />
         </Link>
-        <p>Show Date: {this.handleDate(localDate)}</p>
-        <p>Sale Date: {this.handleDate(startDateTime)}</p>
+        <p>Show Date: {formatDate(localDate)}</p>
+        <p>Sale Date: {formatDate(startDateTime)}</p>
         <a
           className="ticket-container"
           href={url}
