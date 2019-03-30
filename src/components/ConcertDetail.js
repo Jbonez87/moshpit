@@ -78,6 +78,7 @@ class ConcertDetail extends Component {
           }
         }) => (
       <div
+        className="event-detail-item"
         key={id}
       >
         <h2>{name}</h2>
@@ -111,7 +112,10 @@ class ConcertDetail extends Component {
         {
           event
         }
-        <button
+        <div
+          className="btn-container"
+        >
+          <button
           className="back-arrow"
           title="Back to search results"
           onClick={this.goBack}
@@ -129,6 +133,7 @@ class ConcertDetail extends Component {
             &hearts;
           </span>
         </button>
+        </div>
       </div>
     );
   }
