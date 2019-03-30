@@ -125,8 +125,8 @@
 }
 
 .event-image {
-  /* min-height: 26.6875rem;
-  min-width: 40rem; */
+  min-height: 12.6875rem;
+  min-width: 19.0625rem;
   max-height: 26.6875rem;
   max-width: 40rem;
 }
