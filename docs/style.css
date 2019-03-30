@@ -117,11 +117,17 @@
   margin: 2rem 0 2.8rem 0;
 }
 
-.event-item h2 {
+.event-detail-item {
+  margin: 2rem 0 1.8rem 0;
+}
+
+.event-item h2,
+.event-detail-item h2 {
   padding: 0 0 0.8rem 0;
 }
 
-.event-item p {
+.event-item p,
+.event-detail-item p {
   padding: 0.8rem;
 }
 
@@ -151,6 +157,7 @@
 
 .favorite {
   position: relative;
+  height: 1.5rem;
   background: rgb(0, 0, 0);
   color: rgb(59, 58, 58);
   margin: 1rem;
@@ -159,7 +166,8 @@
 
 .favorite span {
   position: absolute;
-  top: -0.7rem;
+  left: 0.28125rem;
+  top: -0.56rem;
 }
 
 .red {
