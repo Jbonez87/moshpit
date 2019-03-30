@@ -54,17 +54,6 @@ class Home extends Component {
   handleImageError = e => {
     e.target.src = placeHolder;
   }
-  // Converts localDate to localeDateString with default options
-  // handleDate = date => {
-  //   const options = {
-  //     weekday: 'long', 
-  //     year: 'numeric', 
-  //     month: 'long', 
-  //     day: 'numeric'
-  //   }
-  //   const formattedDate = new Date(date).toLocaleDateString('en-us', options);
-  //   return formattedDate;
-  // }
   render() {
     // user input
     const {

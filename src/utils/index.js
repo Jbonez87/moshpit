@@ -27,5 +27,5 @@ export const formatDate = (date) => {
     day: 'numeric',
   };
   const formattedDate = new Date(date).toLocaleDateString('en-us', options);
-  return formattedDate;
+  return formattedDate !== 'Monday, January 1, 1900' ? formattedDate : 'TBA';
 };

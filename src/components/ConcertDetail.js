@@ -9,6 +9,10 @@ import {
   removingFavorites
 } from '../actions';
 
+import {
+  formatDate
+} from '../utils';
+
 import Loading from './Loading';
 
 import placeHolder from '../static/images/placeholder.jpg';
@@ -57,7 +61,22 @@ class ConcertDetail extends Component {
       error,
       isLoading
     } = this.props;
-    const event = Object.values(concert).map(({id, name, images, url}) => (
+    const event = Object.values(concert).map(({
+          id,
+          name,
+          images,
+          url,
+          dates: {
+            start: {
+              localDate
+            }
+          },
+          sales: {
+            public: {
+              startDateTime
+            }
+          }
+        }) => (
       <div
         key={id}
       >
@@ -67,6 +86,8 @@ class ConcertDetail extends Component {
           src={images[0].url}
           onError={this.handleError}
         />
+        <p>Show Date: {formatDate(localDate)}</p>
+        <p>Sale Date: {formatDate(startDateTime)}</p>
         <a
           className="ticket-container"
           href={url}
