@@ -2,17 +2,18 @@ import React from 'react';
 import {
   Route,
   Switch,
-  withRouter
+  withRouter,
 } from 'react-router-dom';
 import {
   TransitionGroup,
-  CSSTransition
-} from "react-transition-group";
+  CSSTransition,
+} from 'react-transition-group';
 
 import '../static/css/routes.css';
 
 import routes from './routes';
 
+// eslint-disable-next-line react/prop-types
 const RoutesContainer = ({ location }) => (
   <div>
     <TransitionGroup className="transition-group">
@@ -27,11 +28,10 @@ const RoutesContainer = ({ location }) => (
           <Switch
             location={location}
           >
-            {routes.map(route => 
-            (
+            {routes.map(route => (
               <Route
                 exact
-                key={route.id} 
+                key={route.id}
                 path={route.path}
                 component={route.component}
               />
