@@ -125,7 +125,7 @@ class ConcertDetail extends Component {
           </span>
         </button>
         <button
-          className="favorite"
+          className="favorite-btn"
           onClick={this.handleFavorite}
           title="Add to favorites"
         >

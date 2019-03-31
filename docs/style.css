@@ -1,19 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat|Roboto|Cabin);
 :root {
-  --error-color: rgb(216, 0, 12);
   --form-gradient: linear-gradient(rgb(51, 51, 51), rgb(34, 34, 34));
   --shadow-color: 0 -0.0625rem 0 rgb(0, 0, 0);
-  --ticket-bg: rgb(27, 116, 231);
-}
-
-.loading {
-  max-width: 69.75rem;
-  max-height: 51.25rem;
-}
-
-.error {
-  padding: .8rem;
-  color: var(--error-color);
 }
 
 .form-wrapper form {
@@ -29,21 +17,21 @@
 }
 
 .form-wrapper input {
-	background: var(--form-gradient);	
-	border: 0.0625rem solid rgb(68, 68, 68);
-	border-radius: 0.3125rem 0 0 0.3125rem;
-	box-shadow: 0 0.125rem 0 rgb(0, 0, 0);
-	color: rgb(136, 136, 136);
-	display: block;
-	float: left;
-	font-family: 'Cabin', helvetica, arial, sans-serif;
-	font-size: 0.9rem;
-	font-weight: 400;
-	height: 3rem;
-	margin: 0;
-	padding: 0 0.625rem;
-	text-shadow: var(--shadow-color);
-	width: 12.5rem;
+  background: var(--form-gradient);
+  border: 0.0625rem solid rgb(68, 68, 68);
+  border-radius: 0.3125rem 0 0 0.3125rem;
+  box-shadow: 0 0.125rem 0 rgb(0, 0, 0);
+  color: rgb(136, 136, 136);
+  display: block;
+  float: left;
+  font-family: 'Cabin', helvetica, arial, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  height: 3rem;
+  margin: 0;
+  padding: 0 0.625rem;
+  text-shadow: var(--shadow-color);
+  width: 12.5rem;
 }
 
 .form-wrapper input:-webkit-input-placeholder,
@@ -66,25 +54,25 @@
 }
 
 .form-wrapper input[type="submit"] {
-	background: var(--form-gradient);
-	box-sizing: border-box;
-	border: 0.0625rem solid rgb(68, 68, 68);
-	border-left-color: rgb(0, 0, 0);
-	border-radius: 0 0.3125rem 0.3125rem 0;
-	box-shadow: 0 0.125rem 0 rgb(0, 0, 0);
-	color: rgb(255, 255, 255);
-	display: block;
-	float: left;
-	font-family: 'Cabin', helvetica, arial, sans-serif;
-	font-size: 1rem;
-	font-weight: 400;
-	height: 3rem;
-	line-height: 2.5rem;
-	margin: 0;
-	padding: 0;
-	position: relative;
-	text-shadow: var(--shadow-color);
-	width: 5rem;
+  background: var(--form-gradient);
+  box-sizing: border-box;
+  border: 0.0625rem solid rgb(68, 68, 68);
+  border-left-color: rgb(0, 0, 0);
+  border-radius: 0 0.3125rem 0.3125rem 0;
+  box-shadow: 0 0.125rem 0 rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  display: block;
+  float: left;
+  font-family: 'Cabin', helvetica, arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  height: 3rem;
+  line-height: 2.5rem;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  text-shadow: var(--shadow-color);
+  width: 5rem;
 }
 
 .form-wrapper input[type="submit"]:hover,
@@ -96,9 +84,9 @@
 }
 
 .form-wrapper input[type="submit"]:active {
-	background: linear-gradient(rgb(57, 57, 57), rgb(41, 41, 41));
-	box-shadow: 0 0.0625rem 0 rgb(0, 0, 0), inset 0.0625rem 0 0.0625rem rgb(34, 34, 34);
-	top: 0.0625rem;
+  background: linear-gradient(rgb(57, 57, 57), rgb(41, 41, 41));
+  box-shadow: 0 0.0625rem 0 rgb(0, 0, 0), inset 0.0625rem 0 0.0625rem rgb(34, 34, 34);
+  top: 0.0625rem;
 }
 
 @keyframes glow {
@@ -111,6 +99,21 @@
     border-color: rgb(102, 255, 102);
     box-shadow: 0 0 1.25rem rgba(0, 255, 0, .6), inset 0 0 0.625rem rgba(0, 255, 0, .4), 0 0.125rem 0 rgb(0, 0, 0);
   }
+}
+
+:root {
+  --error-color: rgb(216, 0, 12);
+  --ticket-bg: rgb(27, 116, 231);
+}
+
+.loading {
+  max-width: 69.75rem;
+  max-height: 51.25rem;
+}
+
+.error {
+  padding: .8rem;
+  color: var(--error-color);
 }
 
 .event-item {
@@ -128,7 +131,8 @@
 
 .event-item p,
 .event-detail-item p {
-  padding: 0.8rem;
+  padding: 0.8rem 0 0 0;
+  font-size: 1rem;
 }
 
 .event-image {
@@ -155,7 +159,7 @@
   font-size: 1rem;
 }
 
-.favorite {
+.favorite-btn {
   position: relative;
   height: 1.5rem;
   background: rgb(0, 0, 0);
@@ -164,7 +168,7 @@
   font-size: 1.6rem;
 }
 
-.favorite span {
+.favorite-btn span {
   position: absolute;
   left: 0.28125rem;
   top: -0.56rem;
@@ -174,7 +178,7 @@
   color: var(--error-color);
 }
 
-.favorite, .back-arrow {
+.favorite-btn, .back-arrow {
   padding: 0.8rem;
   border: none;
   cursor: pointer;
