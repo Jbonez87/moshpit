@@ -4,14 +4,14 @@ import {
   ADDING_FAVORITES_REJECTED,
   REMOVING_FAVORITES,
   REMOVING_FAVORITES_REJECTED,
-  REMOVING_FAVORITES_RESOLVED
+  REMOVING_FAVORITES_RESOLVED,
 } from '../actions/types';
 
 const initialState = {
   favorites: {},
   loading: false,
-  error: null
-}
+  error: null,
+};
 
 const favoritesReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -20,36 +20,37 @@ const favoritesReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-      }
+      };
     case ADDING_FAVORITES_RESOLVED:
       return {
         ...state,
         favorites: {
           ...state.favorites,
-          [action.payload.id]: action.payload
+          [action.payload.id]: action.payload,
         },
-        loading: false
-      }
+        loading: false,
+      };
     case REMOVING_FAVORITES_RESOLVED:
+      // eslint-disable-next-line no-case-declarations
       const newFavorites = Object.assign({}, state.favorites);
-      delete newFavorites[action.payload.id]
+      delete newFavorites[action.payload.id];
       return {
         ...state,
         favorites: {
-          ...newFavorites
+          ...newFavorites,
         },
-        loading: false
-      }
+        loading: false,
+      };
     case ADDING_FAVORITES_REJECTED:
     case REMOVING_FAVORITES_REJECTED:
       return {
         ...state,
         loading: false,
-        error: action.payload
-      }
+        error: action.payload,
+      };
     default:
       return state;
   }
-}
+};
 
 export default favoritesReducer;
