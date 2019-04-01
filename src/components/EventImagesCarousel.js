@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class EventCarousel extends Component {
+class EventImagesCarousel extends Component {
   render() {
     return (
       <div>
@@ -10,4 +10,4 @@ class EventCarousel extends Component {
   }
 }
 
-export default EventCarousel;
+export default EventImagesCarousel;
