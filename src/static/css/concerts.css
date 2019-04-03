@@ -39,6 +39,11 @@
   max-width: 40rem;
 }
 
+.event-info {
+  margin: 0 auto;
+  max-width: 45vw;
+}
+
 .ticket-container {
   display: block;
   margin: 1rem auto;

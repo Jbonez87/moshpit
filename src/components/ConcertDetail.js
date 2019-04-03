@@ -93,7 +93,7 @@ class ConcertDetail extends Component {
         <p
           className="event-info"
         >
-          {info}
+          {info ? info : 'No info available'}
         </p>
         <a
           className="ticket-container"
