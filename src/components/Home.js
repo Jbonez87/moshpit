@@ -51,7 +51,8 @@ class Home extends Component {
             public: {
               startDateTime
             }
-          }
+          },
+          info
         }) => (
       <div
         key={id}
@@ -69,6 +70,11 @@ class Home extends Component {
         </Link>
         <p>Show Date: {formatDate(localDate)}</p>
         <p>Sale Date: {formatDate(startDateTime)}</p>
+        <p
+          className="event-info"
+        >
+          {info}
+        </p>
         <a
           className="ticket-container"
           href={url}

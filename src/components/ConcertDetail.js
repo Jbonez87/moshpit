@@ -75,7 +75,8 @@ class ConcertDetail extends Component {
             public: {
               startDateTime
             }
-          }
+          },
+          info
         }) => (
       <div
         className="event-detail-item"
@@ -89,6 +90,11 @@ class ConcertDetail extends Component {
         />
         <p>Show Date: {formatDate(localDate)}</p>
         <p>Sale Date: {formatDate(startDateTime)}</p>
+        <p
+          className="event-info"
+        >
+          {info}
+        </p>
         <a
           className="ticket-container"
           href={url}
