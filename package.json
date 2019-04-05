@@ -15,9 +15,12 @@
   "author": "John Castrillon",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "dotenv": "^6.2.0",
     "dotenv-webpack": "^1.7.0",
     "express": "^4.16.4",
+    "mongoose": "^5.4.22",
+    "multer": "^1.4.1",
     "node-sass": "^4.11.0",
     "prop-types": "^15.6.2",
     "react": "^16.8.1",
@@ -28,10 +31,10 @@
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "webpack-dev-server": "^3.2.0",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.2.3",
     "webpack-dev-middleware": "^3.5.2",
+    "webpack-dev-server": "^3.2.0",
     "webpack-hot-middleware": "^2.24.3"
   },
   "devDependencies": {
