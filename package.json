@@ -28,7 +28,11 @@
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "webpack-dev-server": "^3.2.0"
+    "webpack-dev-server": "^3.2.0",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-middleware": "^3.5.2",
+    "webpack-hot-middleware": "^2.24.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -51,10 +55,6 @@
     "mini-css-extract-plugin": "^0.5.0",
     "nodemon": "^1.18.10",
     "style-loader": "^0.23.1",
-    "url-loader": "^1.1.2",
-    "webpack": "^4.29.3",
-    "webpack-cli": "^3.2.3",
-    "webpack-dev-middleware": "^3.5.2",
-    "webpack-hot-middleware": "^2.24.3"
+    "url-loader": "^1.1.2"
   }
 }
