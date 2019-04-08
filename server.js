@@ -10,6 +10,8 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const config = require('./webpack.config.js');
 
+const schema = require('./api/schema.js');
+
 const app = express();
 
 const compiler = webpack(config);
@@ -21,7 +23,8 @@ const midWare = webpackDevMiddleware(compiler, {
 });
 
 app.use('/graphql', graphqlHTTP({
-  
+  schema,
+  graphiql: true,
 }));
 
 app.use(midWare);
