@@ -1,7 +1,7 @@
 const graphql = require('graphql');
 // const uuid = require('uuid/v4');
 
-const { 
+const {
   GraphQLObjectType,
   GraphQLString,
   GraphQLSchema,
@@ -17,6 +17,7 @@ const events = [
     genre: 'Rock',
     saleDate: '2019-04-12T14:00:00Z',
     info: 'TBA',
+    venueId: '1',
   },
   {
     id: '2',
@@ -24,6 +25,7 @@ const events = [
     genre: 'Sports',
     saleDate: '2019-01-23T17:00:00Z',
     info: 'TBA',
+    venueId: '2',
   },
   {
     id: '3',
@@ -31,30 +33,31 @@ const events = [
     genre: 'Play',
     saleDate: '2018-10-30T14:00:00Z',
     info: 'TBA',
+    venueId: '3',
   },
 ];
 
 const venues = [
   {
     id: '1',
-    name: 'Columbus Civic Center',
-    type: 'venue',
-    zipCode: 31901,
-    timezone: 'America/New_York',
-  },
-  {
-    id: '2',
     name: 'Rockingham Dragway',
-    type: 'venue',
+    location: 'venue',
     zipCode: 28379,
     timezone: 'America/New_York',
   },
   {
-    id: '3',
+    id: '2',
     name: 'Coors Field',
-    type: 'venue',
+    location: 'venue',
     zipCode: 80205,
     timezone: 'America/Denver',
+  },
+  {
+    id: '3',
+    name: 'Columbus Civic Center',
+    location: 'venue',
+    zipCode: 31901,
+    timezone: 'America/New_York',
   },
 ];
 
@@ -66,6 +69,14 @@ const EventType = new GraphQLObjectType({
     genre: { type: GraphQLString },
     saleDate: { type: GraphQLString },
     info: { type: GraphQLString },
+    venue: {
+      // eslint-disable-next-line no-use-before-define
+      type: VenueType,
+      // eslint-disable-next-line no-unused-vars
+      resolve(parent, args) {
+        return venues.find(venue => venue.id === parent.venueId);
+      },
+    },
   }),
 });
 
@@ -74,7 +85,7 @@ const VenueType = new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLID },
     name: { type: GraphQLString },
-    type: { type: GraphQLString },
+    location: { type: GraphQLString },
     zipCode: { type: GraphQLInt },
     timezone: { type: GraphQLString },
   }),
