@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const graphql = require('graphql');
 // const uuid = require('uuid/v4');
 
@@ -97,7 +98,6 @@ const EventType = new GraphQLObjectType({
     venue: {
       // eslint-disable-next-line no-use-before-define
       type: VenueType,
-      // eslint-disable-next-line no-unused-vars
       resolve(parent, args) {
         return venues.find(venue => venue.id === parent.venueId);
       },
@@ -145,6 +145,18 @@ const RootQuery = new GraphQLObjectType({
       },
       resolve(parent, args) {
         return venues.find(venue => venue.id === args.id);
+      },
+    },
+    events: {
+      type: new GraphQLList(EventType),
+      resolve(parent, args) {
+        return events;
+      },
+    },
+    venues: {
+      type: new GraphQLList(VenueType),
+      resolve(parent, args) {
+        return venues;
       },
     },
   },
