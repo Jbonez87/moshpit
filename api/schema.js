@@ -7,6 +7,7 @@ const {
   GraphQLSchema,
   GraphQLID,
   GraphQLInt,
+  GraphQLList,
 } = graphql;
 
 // dummy data
@@ -34,6 +35,30 @@ const events = [
     saleDate: '2018-10-30T14:00:00Z',
     info: 'TBA',
     venueId: '3',
+  },
+  {
+    id: '4',
+    name: 'Old Dominion',
+    genre: 'Rock',
+    saleDate: '2019-01-18T15:00:00Z',
+    info: 'TBA',
+    venueId: '3',
+  },
+  {
+    id: '5',
+    name: 'Billy Joel',
+    genre: 'Rock',
+    saleDate: '2019-01-18T17:00:00Z',
+    info: 'TBA',
+    venueId: '2',
+  },
+  {
+    id: '6',
+    name: 'Zac Brown Band: The Owl Tour',
+    genre: 'Rock',
+    saleDate: '2019-02-08T17:00:00Z',
+    info: 'TBA',
+    venueId: '2',
   },
 ];
 
@@ -88,6 +113,12 @@ const VenueType = new GraphQLObjectType({
     location: { type: GraphQLString },
     zipCode: { type: GraphQLInt },
     timezone: { type: GraphQLString },
+    events: {
+      type: new GraphQLList(EventType),
+      resolve(parent, args) {
+        return events.filter(event => event.venueId === parent.id);
+      },
+    },
   }),
 });
 
