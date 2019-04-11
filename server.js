@@ -35,6 +35,8 @@ mongoose.connect(
     useNewUrlParser: true,
   },
 );
+
+// eslint-disable-next-line no-console
 mongoose.connection.once('open', () => console.log('connected'));
 
 app.use('/graphql', graphqlHTTP({
