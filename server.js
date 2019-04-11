@@ -8,8 +8,9 @@ const graphqlHTTP = require('express-graphql');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
-const config = require('./webpack.config.js');
+const mongoose = require('mongoose');
 
+const config = require('./webpack.config.js');
 const schema = require('./api/schema.js');
 
 const app = express();
@@ -21,6 +22,19 @@ const midWare = webpackDevMiddleware(compiler, {
     chunks: false,
   },
 });
+
+const options = {
+  user: process.env.DBUSER,
+  password: process.env.DBPASSWORD,
+  dbUrl: process.env.DBURL,
+};
+
+// connect to mongoDB
+mongoose.connect(
+  `mongodb://${options.user}:${options.password}${options.dbUrl}`, {
+    useNewUrlParser: true,
+  },
+);
 
 app.use('/graphql', graphqlHTTP({
   schema,
