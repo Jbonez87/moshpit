@@ -35,6 +35,7 @@ mongoose.connect(
     useNewUrlParser: true,
   },
 );
+mongoose.connection.once('open', () => console.log('connected'));
 
 app.use('/graphql', graphqlHTTP({
   schema,
