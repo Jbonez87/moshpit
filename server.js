@@ -11,7 +11,7 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 const mongoose = require('mongoose');
 
 const config = require('./webpack.config.js');
-const schema = require('./api/schema.js');
+const schema = require('./api/schema/schema.js');
 
 const app = express();
 
