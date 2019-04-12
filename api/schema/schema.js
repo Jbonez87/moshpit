@@ -181,13 +181,13 @@ const Mutation = new GraphQLObjectType({
           zipCode,
           timezone,
         } = args;
-        let venue = new Venue({
+        const venue = new Venue({
           name,
           location,
           zipCode,
           timezone,
         });
-        venue.save();
+        return venue.save();
       },
     },
   },
