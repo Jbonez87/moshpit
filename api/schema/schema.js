@@ -64,30 +64,6 @@ const {
 //   },
 // ];
 
-// const venues = [
-//   {
-//     id: '1',
-//     name: 'Rockingham Dragway',
-//     location: 'venue',
-//     zipCode: 28379,
-//     timezone: 'America/New_York',
-//   },
-//   {
-//     id: '2',
-//     name: 'Coors Field',
-//     location: 'venue',
-//     zipCode: 80205,
-//     timezone: 'America/Denver',
-//   },
-//   {
-//     id: '3',
-//     name: 'Columbus Civic Center',
-//     location: 'venue',
-//     zipCode: 31901,
-//     timezone: 'America/New_York',
-//   },
-// ];
-
 const EventType = new GraphQLObjectType({
   name: 'Events',
   fields: () => ({
