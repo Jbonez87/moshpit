@@ -1,15 +1,15 @@
 import {
-  combineReducers
+  combineReducers,
 } from 'redux';
 
-import concertsReducer from './concertsReducer';
-import concertReducer from './concertReducer';
+import eventsReducer from './eventsReducer';
+import eventReducer from './eventReducer';
 import favoritesReducer from './favoritesReducer';
 
 const rootReducer = combineReducers({
-  concertsReducer,
-  concertReducer,
-  favoritesReducer
+  eventsReducer,
+  eventReducer,
+  favoritesReducer,
 });
 
 export default rootReducer;

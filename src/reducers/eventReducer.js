@@ -1,33 +1,33 @@
 import {
-  FETCHING_CONCERT,
-  FETCHING_CONCERT_RESOLVED,
-  FETCHING_CONCERT_REJECTED,
+  FETCHING_EVENT,
+  FETCHING_EVENT_RESOLVED,
+  FETCHING_EVENT_REJECTED,
 } from '../actions/types';
 
 const initialState = {
-  concert: {},
+  event: {},
   isLoading: false,
   error: null,
 };
 
-const concertReducer = (state = initialState, action) => {
+const eventReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCHING_CONCERT:
+    case FETCHING_EVENT:
       return {
         ...state,
         isLoading: true,
         error: null,
       };
-    case FETCHING_CONCERT_RESOLVED:
+    case FETCHING_EVENT_RESOLVED:
       return {
         ...state,
-        concert: action.payload,
+        event: action.payload,
         isLoading: false,
       };
-    case FETCHING_CONCERT_REJECTED:
+    case FETCHING_EVENT_REJECTED:
       return {
         ...state,
-        concert: {},
+        event: {},
         isLoading: false,
         error: action.payload,
       };
@@ -36,4 +36,4 @@ const concertReducer = (state = initialState, action) => {
   }
 };
 
-export default concertReducer;
+export default eventReducer;

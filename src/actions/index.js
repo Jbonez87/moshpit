@@ -1,21 +1,22 @@
+/* eslint-disable no-underscore-dangle */
 import {
-  FETCHING_CONCERTS,
-  FETCHING_CONCERTS_RESOLVED,
-  FETCHING_CONCERTS_REJECTED,
-  FETCHING_CONCERT,
-  FETCHING_CONCERT_RESOLVED,
-  FETCHING_CONCERT_REJECTED,
+  FETCHING_EVENTS,
+  FETCHING_EVENTS_RESOLVED,
+  FETCHING_EVENTS_REJECTED,
+  FETCHING_EVENT,
+  FETCHING_EVENT_RESOLVED,
+  FETCHING_EVENT_REJECTED,
   ADDING_FAVORITES,
   ADDING_FAVORITES_RESOLVED,
   ADDING_FAVORITES_REJECTED,
   REMOVING_FAVORITES,
   REMOVING_FAVORITES_RESOLVED,
-  REMOVING_FAVORITES_REJECTED
+  REMOVING_FAVORITES_REJECTED,
 } from './types';
 
 import {
   formatEventsResponse,
-  formatEventResponse
+  formatEventResponse,
 } from '../utils';
 
 
@@ -23,129 +24,128 @@ const baseUrl = process.env.BASEURL;
 const key = process.env.APIKEY;
 
 
-export const fetchConcertsByZip = query => async dispatch => {
+export const fetchEventsByZip = query => async (dispatch) => {
   dispatch({
-    type: FETCHING_CONCERTS
-  })
-  if (!query) {
-    dispatch({
-      type: FETCHING_CONCERTS_REJECTED,
-      payload: 'Please do not leave form blank'
-    })
-  } else {
-    try {
-      let url = `${baseUrl}apikey=${key}&postalCode=${query}`;
-      const request = await fetch(url);
-      const response = await request.json();
-      if (!request.ok) {
-        dispatch({
-          type: FETCHING_CONCERTS_REJECTED,
-          payload: request.statusText
-        });
-      } else if (!response._embedded) {
-        dispatch({
-          type: FETCHING_CONCERTS_REJECTED,
-          payload: 'No events found'
-        })
-      } else {
-        dispatch({
-          type: FETCHING_CONCERTS_RESOLVED,
-          payload: formatEventsResponse(response)
-        });
-      }
-    } catch (e) {
-      dispatch({
-        type: FETCHING_CONCERTS_REJECTED,
-        payload: e
-      });
-    }
-  }
-  
-}
-
-export const fetchConcertsByCity = query => async dispatch => {
-  dispatch({
-    type: FETCHING_CONCERTS
-  })
-  if (!query) {
-    dispatch({
-      type: FETCHING_CONCERTS_REJECTED,
-      payload: 'Please do not leave form blank'
-    })
-  } else {
-    try {
-      let url = `${baseUrl}apikey=${key}&city=${query}`;
-      const request = await fetch(url);
-      const response = await request.json();
-      if (!request.ok) {
-        dispatch({
-          type: FETCHING_CONCERTS_REJECTED,
-          payload: request.statusText
-        });
-      } else if (!response._embedded) {
-        dispatch({
-          type: FETCHING_CONCERTS_REJECTED,
-          payload: 'No events found'
-        })
-      } else {
-        dispatch({
-          type: FETCHING_CONCERTS_RESOLVED,
-          payload: formatEventsResponse(response)
-        });
-      }
-    } catch (e) {
-      dispatch({
-        type: FETCHING_CONCERTS_REJECTED,
-        payload: e
-      });
-    }
-  }
-}
-
-export const fetchConcert = id => (dispatch, getState) => {
-  dispatch({
-    type: FETCHING_CONCERT
+    type: FETCHING_EVENTS,
   });
-  if(!getState().concertsReducer.concerts.events[id]) {
+  if (!query) {
     dispatch({
-      type: FETCHING_CONCERT_REJECTED,
-      payload: 'Event not found or no longer available'
+      type: FETCHING_EVENTS_REJECTED,
+      payload: 'Please do not leave form blank',
+    });
+  } else {
+    try {
+      const url = `${baseUrl}apikey=${key}&postalCode=${query}`;
+      const request = await fetch(url);
+      const response = await request.json();
+      if (!request.ok) {
+        dispatch({
+          type: FETCHING_EVENTS_REJECTED,
+          payload: request.statusText,
+        });
+      } else if (!response._embedded) {
+        dispatch({
+          type: FETCHING_EVENTS_REJECTED,
+          payload: 'No events found',
+        });
+      } else {
+        dispatch({
+          type: FETCHING_EVENTS_RESOLVED,
+          payload: formatEventsResponse(response),
+        });
+      }
+    } catch (e) {
+      dispatch({
+        type: FETCHING_EVENTS_REJECTED,
+        payload: e,
+      });
+    }
+  }
+};
+
+export const fetchEventsByCity = query => async (dispatch) => {
+  dispatch({
+    type: FETCHING_EVENTS,
+  });
+  if (!query) {
+    dispatch({
+      type: FETCHING_EVENTS_REJECTED,
+      payload: 'Please do not leave form blank',
+    });
+  } else {
+    try {
+      const url = `${baseUrl}apikey=${key}&city=${query}`;
+      const request = await fetch(url);
+      const response = await request.json();
+      if (!request.ok) {
+        dispatch({
+          type: FETCHING_EVENTS_REJECTED,
+          payload: request.statusText,
+        });
+      } else if (!response._embedded) {
+        dispatch({
+          type: FETCHING_EVENTS_REJECTED,
+          payload: 'No events found',
+        });
+      } else {
+        dispatch({
+          type: FETCHING_EVENTS_RESOLVED,
+          payload: formatEventsResponse(response),
+        });
+      }
+    } catch (e) {
+      dispatch({
+        type: FETCHING_EVENTS_REJECTED,
+        payload: e,
+      });
+    }
+  }
+};
+
+export const fetchEvent = id => (dispatch, getState) => {
+  dispatch({
+    type: FETCHING_EVENT,
+  });
+  if (!getState().eventsReducer.concerts.events[id]) {
+    dispatch({
+      type: FETCHING_EVENT_REJECTED,
+      payload: 'Event not found or no longer available',
     });
   }
   dispatch({
-    type: FETCHING_CONCERT_RESOLVED,
-    payload: formatEventResponse(getState().concertsReducer.concerts.events[id])
+    type: FETCHING_EVENT_RESOLVED,
+    payload: formatEventResponse(getState().eventsReducer.events.events[id])
   });
-}
+};
 
-export const addingFavorites = concert => (dispatch, getState) => {
+export const addingFavorites = event => (dispatch, getState) => {
   dispatch({
-    type: ADDING_FAVORITES
+    type: ADDING_FAVORITES,
   });
-  if (!concert) {
+  if (!event) {
     dispatch({
       type: ADDING_FAVORITES_REJECTED,
-      payload: 'Concert not found'
+      payload: 'Concert not found',
     });
   }
   dispatch({
     type: ADDING_FAVORITES_RESOLVED,
-    payload: getState().concertsReducer.concerts.events[concert.id]
+    payload: getState().eventsReducer.events.events[event.id],
   });
-}
+};
 
 export const removingFavorites = id => (dispatch, getState) => {
   dispatch({
-    type: REMOVING_FAVORITES
+    type: REMOVING_FAVORITES,
   });
   if (!id) {
     dispatch({
       type: REMOVING_FAVORITES_REJECTED,
-      payload: 'Concert not found'
+      payload: 'Event not found',
     });
   }
   dispatch({
     type: REMOVING_FAVORITES_RESOLVED,
-    payload: getState().favoritesReducer.favorites[id]
+    payload: getState().favoritesReducer.favorites[id],
   });
-}
+};

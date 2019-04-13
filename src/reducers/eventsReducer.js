@@ -1,0 +1,39 @@
+import {
+  FETCHING_EVENTS,
+  FETCHING_EVENTS_RESOLVED,
+  FETCHING_EVENTS_REJECTED,
+} from '../actions/types';
+
+const initialState = {
+  events: {},
+  isLoading: false,
+  error: null,
+};
+
+const eventsReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case FETCHING_EVENTS:
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
+    case FETCHING_EVENTS_RESOLVED:
+      return {
+        ...state,
+        events: action.payload,
+        isLoading: false,
+      };
+    case FETCHING_EVENTS_REJECTED:
+      return {
+        ...state,
+        events: {},
+        isLoading: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export default eventsReducer;
