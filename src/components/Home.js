@@ -25,7 +25,7 @@ class Home extends Component {
      */
     const {
       isLoading,
-      concerts
+      events
     } = this.props;
 
     /**
@@ -37,7 +37,7 @@ class Home extends Component {
      * This checks to make sure that the _embedded object and events array
      * are defined in the concerts object
      */
-    const concertsMap = (concerts.events) ? Object.values(concerts.events).map(({
+    const eventsMap = (events.results) ? Object.values(events.results).map(({
           id,
           name,
           images,
@@ -97,7 +97,7 @@ class Home extends Component {
             isLoading ? <Loading /> : ''
           } 
           {
-            concertsMap
+            eventsMap
           }
         </div>
       </div>
@@ -106,9 +106,9 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-  concerts: state.concertsReducer.concerts,
-  isLoading: state.concertsReducer.isLoading,
-  error: state.concertsReducer.error
+  events: state.eventsReducer.events,
+  isLoading: state.eventsReducer.isLoading,
+  error: state.eventsReducer.error
 });
 
 export default connect(mapStateToProps, null)(Home);

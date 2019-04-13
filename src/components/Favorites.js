@@ -89,8 +89,8 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  removingFavorites(concert) {
-    dispatch(removingFavorites(concert))
+  removingFavorites(event) {
+    dispatch(removingFavorites(event))
   }
 })
 

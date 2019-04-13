@@ -106,7 +106,7 @@ export const fetchEvent = id => (dispatch, getState) => {
   dispatch({
     type: FETCHING_EVENT,
   });
-  if (!getState().eventsReducer.concerts.events[id]) {
+  if (!getState().eventsReducer.events.results[id]) {
     dispatch({
       type: FETCHING_EVENT_REJECTED,
       payload: 'Event not found or no longer available',
@@ -114,7 +114,7 @@ export const fetchEvent = id => (dispatch, getState) => {
   }
   dispatch({
     type: FETCHING_EVENT_RESOLVED,
-    payload: formatEventResponse(getState().eventsReducer.events.events[id]),
+    payload: formatEventResponse(getState().eventsReducer.events.results[id]),
   });
 };
 
@@ -130,7 +130,7 @@ export const addingFavorites = event => (dispatch, getState) => {
   }
   dispatch({
     type: ADDING_FAVORITES_RESOLVED,
-    payload: getState().eventsReducer.events.events[event.id],
+    payload: getState().eventsReducer.events.results[event.id],
   });
 };
 

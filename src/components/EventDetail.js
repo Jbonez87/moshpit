@@ -4,7 +4,7 @@ import {
 } from 'react-redux';
 
 import {
-  fetchConcert,
+  fetchEvent,
   addingFavorites,
   removingFavorites
 } from '../actions';
@@ -25,9 +25,9 @@ class EventDetail extends Component {
           id
         }
       },
-      fetchConcert
+      fetchEvent
     } = this.props;
-    fetchConcert(id);
+    fetchEvent(id);
   }
   handleFavorite = e => {
     e.preventDefault();
@@ -42,7 +42,7 @@ class EventDetail extends Component {
       this.props.removingFavorites(id);
       e.target.classList.remove('red');
     } else {
-      this.props.addingFavorites(this.props.concert[id]);
+      this.props.addingFavorites(this.props.event[id]);
       e.target.classList.add('red');
     }
   }
@@ -51,17 +51,17 @@ class EventDetail extends Component {
   }
   goBack = () => this.props.history.push('/')
   shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.concert != this.props.concert;
+    return nextProps.event != this.props.event;
   }
   render() {
-    if(!this.props.concert) return <Loading />;
+    if(!this.props.event) return <Loading />;
 
     const {
-      concert,
+      event,
       error,
       isLoading
     } = this.props;
-    const event = Object.values(concert).map(({
+    const eventItem = Object.values(event).map(({
           id,
           name,
           images,
@@ -116,7 +116,7 @@ class EventDetail extends Component {
           error ? (<p>{error}</p>) : ''
         }
         {
-          event
+          eventItem
         }
         <div
           className="btn-container"
@@ -146,21 +146,21 @@ class EventDetail extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  fetchConcert(id) {
-    dispatch(fetchConcert(id))
+  fetchEvent(id) {
+    dispatch(fetchEvent(id))
   },
-  addingFavorites(concert) {
-    dispatch(addingFavorites(concert))
+  addingFavorites(event) {
+    dispatch(addingFavorites(event))
   },
-  removingFavorites(concert) {
-    dispatch(removingFavorites(concert))
+  removingFavorites(event) {
+    dispatch(removingFavorites(event))
   }
 });
 
 const mapStateToProps = (state, props) => ({
-  concert: state.concertReducer.concert,
-  isLoading: state.concertReducer.isLoading,
-  error: state.concertReducer.error,
+  event: state.eventReducer.event,
+  isLoading: state.eventReducer.isLoading,
+  error: state.eventReducer.error,
   favorites: state.favoritesReducer.favorites
 });
 

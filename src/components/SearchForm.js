@@ -4,8 +4,8 @@ import {
 } from 'react-redux';
 
 import {
-  fetchConcertsByCity,
-  fetchConcertsByZip
+  fetchEventsByCity,
+  fetchEventsByZip
 } from '../actions';
 
 import '../static/css/search-form.css';
@@ -36,9 +36,9 @@ class SearchForm extends Component {
 
     // Checks if the query isNaN to determine which search should be performed
     if (isNaN(search)) {
-      this.props.fetchConcertsByCity(encodeURIComponent(search))
+      this.props.fetchEventsByCity(encodeURIComponent(search))
     } else {
-      this.props.fetchConcertsByZip(encodeURIComponent(search));
+      this.props.fetchEventsByZip(encodeURIComponent(search));
     }
   }
   render() {
@@ -74,11 +74,11 @@ class SearchForm extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  fetchConcertsByZip(query) {
-    dispatch(fetchConcertsByZip(query));
+  fetchEventsByZip(query) {
+    dispatch(fetchEventsByZip(query));
   },
-  fetchConcertsByCity(query) {
-    dispatch(fetchConcertsByCity(query))
+  fetchEventsByCity(query) {
+    dispatch(fetchEventsByCity(query))
   }
 })
 

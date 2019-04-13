@@ -12,10 +12,10 @@ export const formatEventsResponse = (response) => {
 };
 
 export const formatEventResponse = (response) => {
-  const concertObj = {
+  const eventObj = {
     [response.id]: response,
   };
-  return concertObj;
+  return eventObj;
 };
 
 export const formatDate = (date) => {
