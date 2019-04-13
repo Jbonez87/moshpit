@@ -72,11 +72,12 @@ const EventType = new GraphQLObjectType({
     genre: { type: GraphQLString },
     saleDate: { type: GraphQLString },
     info: { type: GraphQLString },
+    venueId: { type: GraphQLID },
     venue: {
       // eslint-disable-next-line no-use-before-define
       type: VenueType,
       resolve(parent, args) {
-        // return venues.find(venue => venue.id === parent.venueId);
+        return Venue.findById(parent.venueId);
       },
     },
   }),
@@ -93,7 +94,9 @@ const VenueType = new GraphQLObjectType({
     events: {
       type: new GraphQLList(EventType),
       resolve(parent, args) {
-        // return events.filter(event => event.venueId === parent.id);
+        return Event.find({
+          venueId: parent.id,
+        });
       },
     },
   }),
@@ -110,7 +113,7 @@ const RootQuery = new GraphQLObjectType({
         },
       },
       resolve(parent, args) {
-        // return events.find(event => event.id === args.id);
+        return Event.findById(args.id);
       },
     },
     venue: {
@@ -121,19 +124,19 @@ const RootQuery = new GraphQLObjectType({
         },
       },
       resolve(parent, args) {
-        // return venues.find(venue => venue.id === args.id);
+        return Venue.findById(args.id);
       },
     },
     events: {
       type: new GraphQLList(EventType),
       resolve(parent, args) {
-        // return events;
+        return Event.find({});
       },
     },
     venues: {
       type: new GraphQLList(VenueType),
       resolve(parent, args) {
-        // return venues;
+        return Venue.find({});
       },
     },
   },
@@ -175,6 +178,7 @@ const Mutation = new GraphQLObjectType({
         genre: { type: GraphQLString },
         saleDate: { type: GraphQLString },
         info: { type: GraphQLString },
+        venueId: { type: GraphQLID },
       },
       resolve(
         parent,
@@ -183,6 +187,7 @@ const Mutation = new GraphQLObjectType({
           genre,
           saleDate,
           info,
+          venueId,
         },
       ) {
         const event = new Event({
@@ -190,6 +195,7 @@ const Mutation = new GraphQLObjectType({
           genre,
           saleDate,
           info,
+          venueId,
         });
         return event.save();
       },
