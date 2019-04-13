@@ -150,13 +150,15 @@ const Mutation = new GraphQLObjectType({
         zipCode: { type: GraphQLInt },
         timezone: { type: GraphQLString },
       },
-      resolve(parent, args) {
-        const {
+      resolve(
+        parent,
+        {
           name,
           location,
           zipCode,
           timezone,
-        } = args;
+        },
+      ) {
         const venue = new Venue({
           name,
           location,
@@ -164,6 +166,32 @@ const Mutation = new GraphQLObjectType({
           timezone,
         });
         return venue.save();
+      },
+    },
+    addEvent: {
+      type: EventType,
+      args: {
+        name: { type: GraphQLString },
+        genre: { type: GraphQLString },
+        saleDate: { type: GraphQLString },
+        info: { type: GraphQLString },
+      },
+      resolve(
+        parent,
+        {
+          name,
+          genre,
+          saleDate,
+          info,
+        },
+      ) {
+        const event = new Event({
+          name,
+          genre,
+          saleDate,
+          info,
+        });
+        return event.save();
       },
     },
   },
