@@ -114,7 +114,7 @@ export const fetchEvent = id => (dispatch, getState) => {
   }
   dispatch({
     type: FETCHING_EVENT_RESOLVED,
-    payload: formatEventResponse(getState().eventsReducer.events.events[id])
+    payload: formatEventResponse(getState().eventsReducer.events.events[id]),
   });
 };
 

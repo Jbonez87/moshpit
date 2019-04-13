@@ -1,15 +1,14 @@
+/* eslint-disable no-underscore-dangle */
 export const formatEventsResponse = (response) => {
-  // eslint-disable-next-line no-underscore-dangle
-  const concertMap = response._embedded.events.map(event => ({
+  const eventMap = response._embedded.events.map(event => ({
     [event.id]: event,
   }));
-  const concertObj = {
-    events: Object.assign({}, ...concertMap),
+  const eventObj = {
+    results: Object.assign({}, ...eventMap),
     page: response.page,
-    // eslint-disable-next-line no-underscore-dangle
     links: response._links,
   };
-  return concertObj;
+  return eventObj;
 };
 
 export const formatEventResponse = (response) => {
