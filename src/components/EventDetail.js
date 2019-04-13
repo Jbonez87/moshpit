@@ -17,7 +17,7 @@ import Loading from './Loading';
 
 import placeHolder from '../static/images/placeholder.jpg';
 
-class ConcertDetail extends Component {
+class EventDetail extends Component {
   componentDidMount() {
     const {
       match: {
@@ -164,4 +164,4 @@ const mapStateToProps = (state, props) => ({
   favorites: state.favoritesReducer.favorites
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ConcertDetail);
+export default connect(mapStateToProps, mapDispatchToProps)(EventDetail);
