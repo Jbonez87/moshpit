@@ -10,6 +10,7 @@ const {
   GraphQLID,
   GraphQLInt,
   GraphQLList,
+  GraphQLNonNull,
 } = graphql;
 
 const EventType = new GraphQLObjectType({
@@ -96,10 +97,10 @@ const Mutation = new GraphQLObjectType({
     addVenue: {
       type: VenueType,
       args: {
-        name: { type: GraphQLString },
-        location: { type: GraphQLString },
-        zipCode: { type: GraphQLInt },
-        timezone: { type: GraphQLString },
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        location: { type: new GraphQLNonNull(GraphQLString) },
+        zipCode: { type: new GraphQLNonNull(GraphQLInt) },
+        timezone: { type: new GraphQLNonNull(GraphQLString) },
       },
       resolve(
         parent,
@@ -122,11 +123,11 @@ const Mutation = new GraphQLObjectType({
     addEvent: {
       type: EventType,
       args: {
-        name: { type: GraphQLString },
-        genre: { type: GraphQLString },
-        saleDate: { type: GraphQLString },
-        info: { type: GraphQLString },
-        venueId: { type: GraphQLID },
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        genre: { type: new GraphQLNonNull(GraphQLString) },
+        saleDate: { type: new GraphQLNonNull(GraphQLString) },
+        info: { type: new GraphQLNonNull(GraphQLString) },
+        venueId: { type: new GraphQLNonNull(GraphQLID) },
       },
       resolve(
         parent,
