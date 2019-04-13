@@ -60,7 +60,7 @@ class Home extends Component {
       >
         <h2>{name}</h2>
         <Link
-          to={`/concerts/${id}`}
+          to={`/events/${id}`}
         >
           <img
             className="event-image"
