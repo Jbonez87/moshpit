@@ -26,7 +26,7 @@ class SearchForm extends Component {
   }
   /**
    * This is a submit handler that checks the user input
-   * and dispatches fetchConcertsByZip or fetchConcertsByCity
+   * and dispatches fetchEventsByZip or fetchEventsByCity
    */
   handleSubmit = e => {
     e.preventDefault();
