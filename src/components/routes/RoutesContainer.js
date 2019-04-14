@@ -9,9 +9,9 @@ import {
   CSSTransition,
 } from 'react-transition-group';
 
-import '../static/css/routes.css';
+import '../../static/css/routes.css';
 
-import routes from './routes';
+import routes from '.';
 
 // eslint-disable-next-line react/prop-types
 const RoutesContainer = ({ location }) => (

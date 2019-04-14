@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom';
 
 import NavBar from './NavBar';
-import RoutesContainer from './RoutesContainer';
+import RoutesContainer from './routes/RoutesContainer';
 import Footer from './Footer';
 import '../static/css/app.css';
 

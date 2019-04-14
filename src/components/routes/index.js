@@ -1,10 +1,10 @@
 import uuid from 'uuid/v4';
 
-import Home from './Home';
-import Favorites from './Favorites';
-import EventDetail from './EventDetail';
-import About from './About';
-import NotFound from './NotFound';
+import Home from '../Home';
+import Favorites from '../Favorites';
+import EventDetail from '../EventDetail';
+import About from '../About';
+import NotFound from '../NotFound';
 
 export default [
   {
