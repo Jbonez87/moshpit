@@ -8,6 +8,7 @@ const presets = [
   '@babel/preset-react',
 ];
 const plugins = [
+  'dynamic-import-node',
   '@babel/plugin-proposal-object-rest-spread',
   '@babel/plugin-proposal-class-properties',
   [

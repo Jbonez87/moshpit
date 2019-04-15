@@ -15,6 +15,7 @@
   "author": "John Castrillon",
   "license": "ISC",
   "dependencies": {
+    "babel-plugin-dynamic-import-node": "^2.2.0",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.4",
     "dotenv": "^6.2.0",
