@@ -1,4 +1,27 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat|Roboto|Cabin);
+.about-container {
+  margin: 1.25rem auto;
+  max-width: 55vw;
+  min-width: 25vw;
+}
+
+.about-container p {
+  text-align: left;
+}
+.favorite-wrapper, .no-favorites {
+  margin: 2.2rem;
+}
+
+.remove-container {
+  margin: 0 auto;
+  width: 40rem;
+}
+
+.remove {
+  text-align: right;
+  color: rgb(216, 0, 12);
+  cursor: pointer;
+}
 :root {
   --form-gradient: linear-gradient(rgb(51, 51, 51), rgb(34, 34, 34));
   --shadow-color: 0 -0.0625rem 0 rgb(0, 0, 0);
@@ -101,6 +124,34 @@
   }
 }
 
+.fade-enter {
+  opacity: 0.01;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+.transition-group {
+  position: relative;
+}
+
+.route-section {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
 :root {
   --error-color: rgb(216, 0, 12);
   --ticket-bg: rgb(27, 116, 231);
@@ -191,57 +242,6 @@
 
 .details-wrapper {
   margin: 2.5rem;
-}
-.favorite-wrapper, .no-favorites {
-  margin: 2.2rem;
-}
-
-.remove-container {
-  margin: 0 auto;
-  width: 40rem;
-}
-
-.remove {
-  text-align: right;
-  color: rgb(216, 0, 12);
-  cursor: pointer;
-}
-.about-container {
-  margin: 1.25rem auto;
-  max-width: 55vw;
-  min-width: 25vw;
-}
-
-.about-container p {
-  text-align: left;
-}
-.fade-enter {
-  opacity: 0.01;
-}
-
-.fade-enter.fade-enter-active {
-  opacity: 1;
-  transition: opacity 300ms ease-in;
-}
-
-.fade-exit {
-  opacity: 1;
-}
-
-.fade-exit.fade-exit-active {
-  opacity: 0.01;
-  transition: opacity 300ms ease-in;
-}
-
-.transition-group {
-  position: relative;
-}
-
-.route-section {
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
 }
 nav a, a {
   margin: 0 1rem 0 1rem;

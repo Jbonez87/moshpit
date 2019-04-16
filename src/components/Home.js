@@ -6,7 +6,8 @@ import {
   Link
 } from 'react-router-dom';
 
-import Loading from './Loading';
+// import Loading from './Loading';
+import LazyLoader from './LazyLoader';
 import SearchForm from './SearchForm';
 
 import '../static/css/events.css';
@@ -93,7 +94,7 @@ class Home extends Component {
             error
           } 
           {
-            isLoading ? <Loading /> : ''
+            isLoading ? <LazyLoader path="./Loading.js" /> : ''
           } 
           {
             eventsMap
