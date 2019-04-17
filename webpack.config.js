@@ -38,14 +38,6 @@ module.exports = {
     inline: true,
     port: 3000,
   },
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        default: false,
-        vendors: false,
-      },
-    },
-  },
   module: {
     rules: [
       {
