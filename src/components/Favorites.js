@@ -24,7 +24,7 @@ class Favorites extends Component {
       isLoading,
       error
     } = this.props;
-    const hasError = error ? (<p className="error">{error}</p>) : (<p className="no-favorites">No favorites yet</p>);
+    const hasError = error ? <p className="error">{error}</p> : <p className="no-favorites">No favorites yet</p>;
     const favoriteVals = Object.values(favorites);
     const favoritesList = favoriteVals.length ? favoriteVals.map(({id, name, images, url }) => (
       <div
@@ -72,7 +72,7 @@ class Favorites extends Component {
         className="wrapper"
       >
         {
-          isLoading ? (<p>Loading...</p>) : ''
+          isLoading ? <p>Loading...</p> : ''
         }
         {
           favoritesList
@@ -85,7 +85,7 @@ class Favorites extends Component {
 const mapStateToProps = (state, props) => ({
   favorites: state.favoritesReducer.favorites,
   isLoading: state.favoritesReducer.isLoading,
-  error: state.favoritesReducer.error
+  error: state.favoritesReducer.error,
 });
 
 const mapDispatchToProps = dispatch => ({
