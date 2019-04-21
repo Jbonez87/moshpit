@@ -10,8 +10,8 @@ const initialState = {
   error: null,
 };
 
-const eventsReducer = (state = initialState, action) => {
-  switch (action.type) {
+const eventsReducer = (state = initialState, { type, payload }) => {
+  switch (type) {
     case FETCHING_EVENTS:
       return {
         ...state,
@@ -21,7 +21,7 @@ const eventsReducer = (state = initialState, action) => {
     case FETCHING_EVENTS_RESOLVED:
       return {
         ...state,
-        events: action.payload,
+        events: payload,
         isLoading: false,
       };
     case FETCHING_EVENTS_REJECTED:
@@ -29,7 +29,7 @@ const eventsReducer = (state = initialState, action) => {
         ...state,
         events: {},
         isLoading: false,
-        error: action.payload,
+        error: payload,
       };
     default:
       return state;

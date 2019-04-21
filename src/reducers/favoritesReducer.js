@@ -13,8 +13,8 @@ const initialState = {
   error: null,
 };
 
-const favoritesReducer = (state = initialState, action) => {
-  switch (action.type) {
+const favoritesReducer = (state = initialState, { type, payload }) => {
+  switch (type) {
     case ADDING_FAVORITES:
     case REMOVING_FAVORITES:
       return {
@@ -26,14 +26,14 @@ const favoritesReducer = (state = initialState, action) => {
         ...state,
         favorites: {
           ...state.favorites,
-          [action.payload.id]: action.payload,
+          [payload.id]: payload,
         },
         loading: false,
       };
     case REMOVING_FAVORITES_RESOLVED:
       // eslint-disable-next-line no-case-declarations
       const newFavorites = Object.assign({}, state.favorites);
-      delete newFavorites[action.payload.id];
+      delete newFavorites[payload.id];
       return {
         ...state,
         favorites: {
@@ -46,7 +46,7 @@ const favoritesReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        error: action.payload,
+        error: payload,
       };
     default:
       return state;
