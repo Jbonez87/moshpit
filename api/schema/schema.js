@@ -3,6 +3,8 @@ const graphql = require('graphql');
 const Event = require('../models/event.js');
 const Venue = require('../models/venue.js');
 
+console.log(Venue);
+
 const {
   GraphQLObjectType,
   GraphQLString,
