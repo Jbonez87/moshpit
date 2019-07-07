@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
+console.log(Schema);
 const eventSchema = new Schema({
   name: String,
   genre: String,
